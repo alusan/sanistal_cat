@@ -1,0 +1,48 @@
+body {
+	background-color: #FFFFFF;
+	background-image: url('design/bg_loop.jpg');
+	background-repeat: repeat-x;
+	background-position: top;
+	margin: 0px 0px 0px 0px;
+}
+
+p {
+}
+
+#main {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#topbanner {
+	width: 900px;
+	height: 103px;
+}
+
+#topbanner img {
+}
+
+#searchbarMenu {
+	width: 900px;
+	height: 42px;
+}
+
+#content {
+	width: 900px;
+}
+
+#sidebar {
+	width: 200px;
+	height: 500px;
+	float: left;
+	background-image: url('design/sidebar_seperator.jpg');
+	background-repeat: repeat-y;
+	background-position: right;
+}
+
+#cat_view {
+	width: 680px;
+	float: right;
+	padding: 0px 0px 0px 20px;
+}
