@@ -4,9 +4,36 @@ body {
 	background-repeat: repeat-x;
 	background-position: top;
 	margin: 0px 0px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	font-size: larger;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h2 {
+	color: #0c2340;
+	font-size: small;
+	text-decoration: underline;
+	margin-top: 0px;
+}
+
+h3 {
+	color: #5b165f;
+	font-size: medium;
+	text-align: center;
 }
 
 p {
+	font-size: small;
+}
+
+#navigationmenu {
+	margin-top: 17px;
+	font-weight: bold;
 }
 
 #main {
@@ -44,5 +71,47 @@ p {
 #cat_view {
 	width: 680px;
 	float: right;
-	padding: 0px 0px 0px 20px;
+	padding: 20px 0px 0px 20px;
+}
+
+#left_view {
+	width: 304px;
+	float: left;
+}
+
+#right_view {
+	width: 376px;
+	float: right;
+}
+
+#bottom_view {
+	width: 680px;
+	clear: both;
+	padding: 18px 0px 0px 0px;
+	text-align: center;
+}
+
+table.confitting {
+	width: 680px;
+	text-align: center;
+	text-decoration: underline;
+}
+
+table.alu p {
+	margin: 2px 0px 2px 4px;
+}
+
+table.alu {
+	width: 275px;
+	margin-top: 25px;
+}
+
+tr.aluFirstRow p {
+	font-weight: bold;
+}
+
+table, th, td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
 }
