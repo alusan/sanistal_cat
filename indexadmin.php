@@ -63,61 +63,23 @@ while ($row_manu = mysql_fetch_array($results_manu)) {
 	echo "</li>";
 }
 echo "</ul>";
-
-?> 					
-    					
-    					
-
-
+?>
     				</div>
 				</div>
 				<div id="cat_view">
-					<div id="left_view">
-						<h1>Ford</h1>
-						<h2>TRANSIT CONNECT L1</h2>
-												
-						<table class="alu">
-							<tr class="aluFirstRow">
-								<td class="alu"><p>Aluminiums-lister</p></td>
-								<td class="alu"><p>Længde i cm.</p></td>
-							</tr>
+					<h1>Tilføj</h1>
+					<h2>Fabrikant</h2>
+					<form method="post" action="action_add.php">
+						<table>
 							<tr>
-								<td class="alu"><p>L1 Vognbund</p></td>
-								<td class="alu"><p>1x100 + 1x154</p></td>
+								<td><p>Fabrikantnavn:</p></td>
+								<td><input type="text" name="manufacturer_name" /></td>
 							</tr>
 						</table>
-						<a href="pdf/1433317.pdf"><img class="extraTopMargin" src="design/button_download_pdf.jpg" alt="Download PDF" /></a>
-					</div>
-					<div id="right_view">
-						<a href="index.php"><img src="images_cars/ford_transit.jpg" alt="Ford Transit" /></a>
-					</div>
-					<div id="bottom_view">
-					</div>
-						<table class="confitting">
-							<tr>
-								<td width="50%"><img src="images_fittings/3169158_loft.jpg" alt="loft" title="Sani nr. 3169158" /></td>
-								<td width="50%"><img src="images_fittings/3169166_vognbund.jpg" alt="vognbund" title="Sani nr. 3169166" /></td>
-							</tr>
-							<tr>
-								<td><p>LOFT - Sani nr.: 3169158</p></td>
-								<td><p>VOGNBUND - Sani nr.: 3169166</p></td>
-							</tr>
-						</table>
-							<h3>BEKLÆDNINGER - Sani nr. 3169141</h3>
-						<table class="confitting">
-							<tr>
-								<td><img src="images_fittings/3169141_1-3.jpg" alt="Beklædning 1-3" title="Sani nr. 3169141" /></td>
-								<td><img src="images_fittings/3169141_2-3.jpg" alt="Beklædning 2-3" title="Sani nr. 3169141" /></td>
-								<td><img src="images_fittings/3169141_3-3.jpg" alt="Beklædning 3-3" title="Sani nr. 3169141" /></td>
-							</tr>
-							<tr>
-								<td><p>VENSTRE SIDE (1/3)</p></td>
-								<td><p>HØJRE SIDE (2/3)</p></td>
-								<td><p>SKYDEDØR (3/3)</p></td>
-							</tr>
-						</table>
-				</div>
-				
+						<input type="hidden" name="add" value="manufacturer" />
+						<input type="submit" name="submit" value="Tilføj Fabrikant" />
+					</form>
+				</div>		
 			</div>
 		</div>
 	</body>
