@@ -43,28 +43,15 @@ while ($row_manu = mysql_fetch_array($results_manu)) {
 	$manufacturer_id = $row_manu['fabrikant_id'];
 	echo "<ul>";
 	
-	$results_mod = mysql_query("SELECT * FROM bilmodel WHERE fabrikant_id='$manufacturer_id' ORDER BY bilmodel_navn", $conn); 
-	while ($row_mod = mysql_fetch_array($results_mod)) {
-		echo "<li>";
-		echo $row_mod['bilmodel_navn'];
-		$model_id = $row_mod['bilmodel_id'];
-		echo "<ul>";		
-		
-		$results_car = mysql_query("SELECT * FROM biler WHERE bilmodel_id='$model_id' ORDER BY bil_navn", $conn); 
+	$results_car = mysql_query("SELECT * FROM biler WHERE fabrikant_id='$manufacturer_id' ORDER BY bil_navn", $conn);
 		while ($row_car = mysql_fetch_array($results_car)) {
-			echo "<li>" . $row_car['bil_navn'] . "</li>";
-			
-			
-		}
-		echo "</ul>";
-		echo "</li>";
+		echo "<li>" . $row_car['bil_navn'] . "</li>";	
 	}
 	echo "</ul>";
 	echo "</li>";
 }
 echo "</ul>";
-?>
-    				</div>
+?> 	 				</div>
 				</div>
 				<div id="cat_view">
 					<h1>Tilføj</h1>
