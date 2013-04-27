@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 22. 04 2013 kl. 13:11:38
+-- Genereringstid: 24. 04 2013 kl. 06:56:54
 -- Serverversion: 5.5.24-log
 -- PHP-version: 5.4.3
 
@@ -69,6 +69,28 @@ INSERT INTO `fabrikant` (`fabrikant_id`, `fabrikant_navn`) VALUES
 (3, 'Toyota'),
 (4, 'Opel'),
 (6, 'Rolls Royce');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `rights` int(1) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Data dump for tabellen `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `pass`, `rights`) VALUES
+(1, 'morten', 'ostemand', 2),
+(2, 'admin', 'kodeord', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

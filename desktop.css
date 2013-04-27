@@ -124,3 +124,30 @@ table.alu, th.alu, td.alu
 .extraTopMargin {
 	margin-top: 20px;
 }
+
+#loginbox {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 240px;
+	width: 250px;
+	height: 200px;
+	border: solid black 1px;
+	background-color: white;
+}
+
+#lbox_top {
+	width: 250px;
+	height: 40px;
+}
+
+#lbox_bottom {
+	width: 250px;
+	height: 160px;
+}
+
+
+
+.loginbg {
+	background-image: url('design/bg_login.png');
+	background-repeat: repeat;
+}
