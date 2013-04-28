@@ -68,15 +68,16 @@ img {
 	width: 200px;
 	height: 500px;
 	float: left;
-	background-image: url('design/sidebar_seperator.jpg');
-	background-repeat: repeat-y;
-	background-position: right;
 }
 
 #cat_view {
 	width: 680px;
 	float: right;
 	padding: 20px 0px 0px 20px;
+	background-image: url('design/sidebar_seperator.jpg');
+	background-repeat: repeat-y;
+	background-position: left;
+	min-height: 400px;
 }
 
 #left_view {
@@ -146,8 +147,11 @@ table.alu, th.alu, td.alu
 }
 
 
-
 .loginbg {
 	background-image: url('design/bg_login.png');
 	background-repeat: repeat;
+}
+
+.logud {
+	margin: 5px 0px 5px 0px;
 }

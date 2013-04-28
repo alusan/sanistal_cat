@@ -3,17 +3,15 @@ require_once 'dbconnect.php'; // connect to database
 mysql_select_db("sanistaal_db");
 session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-// username and password sent from Form
+	// username and password sent from Form
 	$username = addslashes($_POST['username']);
 	$pass = addslashes($_POST['password']);
-	echo $username . " " . $pass;
 
 	$check_query = "SELECT user_id FROM users WHERE name='$username' and pass='$pass'";
 	$check_result = mysql_query($check_query);
 	$check_row = mysql_fetch_array($check_result);
 	$maxRowCount = mysql_num_rows($check_result);
 
-	// If result matched $myusername and $mypassword, table row must be 1 row
 	if($maxRowCount==1) {
 		$_SESSION['login_user'] = $username;
 		
