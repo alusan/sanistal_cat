@@ -146,6 +146,10 @@ table.alu, th.alu, td.alu
 	height: 160px;
 }
 
+.bor {
+	border: solid 1px black;
+}
+
 
 .loginbg {
 	background-image: url('design/bg_login.png');

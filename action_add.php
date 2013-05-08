@@ -15,5 +15,5 @@ switch ($_POST['add']) {
 	default:
 		break;
 }
-	header("Location: indexadmin.php");
+	header("Location: mainadmin.php");
 ?>

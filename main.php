@@ -11,6 +11,9 @@ include 'includes/user_lock.php';
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sanistål Beklædningskatalog</title>
 		<link rel="stylesheet" href="desktop.css" type="text/css" media="screen" />
+		<script src="lib/jquery-1.7.2.min.js"></script>
+		<script src="lib/lightbox.js"></script>
+		<link rel="stylesheet" href="css/lightbox.css" />
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<script type="text/javascript" src="jquery.jstree.js"></script>
     <script type="text/javascript" class="source">
@@ -58,7 +61,6 @@ echo "</ul>";
     				</div>
 				</div>
 				<div id="cat_view">
-					
                     <?php
                     if (isset($_REQUEST['bilid']))
                     {
