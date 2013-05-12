@@ -36,6 +36,11 @@ img {
 	margin: 0px 0px 0px 0px;
 }
 
+form {
+	display: inline;
+	margin: 0px 0px 0px 0px;
+}
+
 #navigationmenu {
 	margin-top: 17px;
 	font-weight: bold;
@@ -150,6 +155,48 @@ table.alu, th.alu, td.alu
 	border: solid 1px black;
 }
 
+.noBor {
+	border: none;
+	margin: 0px 0px 0px 0px;
+}
+
+.searchfield {
+	background-image: url('design/searchbar_loop.jpg');
+	background-repeat: repeat-x;
+	height: 29px;
+	width: 200px;
+	padding-top: 6px;
+	padding-bottom: 7px;
+	border: none;
+	margin: 0px 0px 0px 0px;
+}
+
+#sfieldleft {
+	background-image: url('design/searchbar_left.jpg');
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 42px;
+	width: 200px;
+	padding-left: 11px;
+}
+
+#sfieldright {
+	background-image: url('design/searchbar_right.jpg');
+	background-repeat: no-repeat;
+	background-position: right;
+	height: 42px;
+	width: 211px;
+	padding-right: 11px;
+}
+#sfield {
+	height: 42px;
+	float: left;
+}
+
+#logoutfield {
+	height: 42px;
+	float: right;
+}
 
 .loginbg {
 	background-image: url('design/bg_login.png');

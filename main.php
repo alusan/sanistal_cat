@@ -31,10 +31,19 @@ include 'includes/user_lock.php';
 	<body>
 		<div id="main">
 			<div id="topbanner">
-				<a href="index.php"><img src="design/logo.jpg" alt="Sanistål Beklædningskatalog" /></a>
+				<a href="main.php"><img src="design/logo.jpg" alt="Sanistål Beklædningskatalog" /></a>
 			</div>
 			<div id="searchbarMenu">
-				<a href="log_out.php"><img class="logud" align="right" src="design/logud.jpg" /></a>
+				<div id="sfield">
+					<form method="post" action="main.php">
+						<div id="sfieldright">
+							<div id="sfieldleft">
+								<input class="searchfield" name="search" type="text" />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="logoutfield"><a href="log_out.php"><img class="logud" src="design/logud.jpg" /></a></div>
 			</div>
 			<div id="content">
 				<div id="sidebar">
@@ -55,9 +64,7 @@ while ($row_manu = mysql_fetch_array($results_manu)) {
 	echo "</li>";
 }
 echo "</ul>";
-?> 					
-
-
+?>
     				</div>
 				</div>
 				<div id="cat_view">
@@ -68,7 +75,17 @@ echo "</ul>";
                     }
 					else
 				    {
-				      include 'includes/pages/frontpage.php';
+				    	if (isset($_POST['search']))
+                    	{
+                      	include 'includes/pages/search.php';
+                    	}
+                    	else {
+							if (isset($_REQUEST['page']) && $lock_row['rights']==1) {
+								echo "Du er kommet til admin med værdien = " . $_REQUEST['page'] . " og " . $lock_row['rights'];
+							} else {
+								include 'includes/pages/frontpage.php';
+							}
+						}
 				    }
                     ?>
 				</div>
