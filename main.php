@@ -6,7 +6,7 @@ include 'includes/user_lock.php';
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="da" lang="da">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sanistål Beklædningskatalog</title>
@@ -38,7 +38,7 @@ include 'includes/user_lock.php';
 					<form method="post" action="main.php">
 						<div id="sfieldright">
 							<div id="sfieldleft">
-								<input class="searchfield" name="search" type="text" />
+								<input class="searchfield" name="search" type="text" value="Søg bilens navn, fabrikant..." />
 							</div>
 						</div>
 					</form>
@@ -52,13 +52,13 @@ include 'includes/user_lock.php';
 $results_manu = mysql_query("SELECT * FROM fabrikant ORDER BY fabrikant_navn", $conn); 
 echo "<ul>";
 while ($row_manu = mysql_fetch_array($results_manu)) {
-	echo "<li><a>" . $row_manu['fabrikant_navn'];
+	echo "<li><a class='navilink'>" . $row_manu['fabrikant_navn'];
 	$manufacturer_id = $row_manu['fabrikant_id'];
 	echo "</a><ul>";
 	
 	$results_car = mysql_query("SELECT * FROM biler WHERE fabrikant_id='$manufacturer_id' ORDER BY bil_navn", $conn);
 		while ($row_car = mysql_fetch_array($results_car)) {
-		echo "<li><a href='main.php?bilid=". $row_car['bil_id'] ."'>" . $row_car['bil_navn'] . "</a></li>";	
+		echo "<li><a class='navilink' href='main.php?bilid=". $row_car['bil_id'] ."'>" . $row_car['bil_navn'] . "</a></li>";	
 	}
 	echo "</ul>";
 	echo "</li>";
@@ -66,6 +66,16 @@ while ($row_manu = mysql_fetch_array($results_manu)) {
 echo "</ul>";
 ?>
     				</div>
+<?php
+if ($rights==1) {
+	echo "<br /><h3>Admin</h3>";
+	echo "<a class='link' href='main.php?adm=1'>Fabrikanter</a><br />";
+	echo "<a class='link' href='main.php?adm=2'>Bilmodeller</a><br />";
+	echo "<a class='link' href='main.php?adm=3'>Alulister</a><br />";
+	echo "<a class='link' href='main.php?adm=4'>Loft og bunde</a><br />";
+	echo "<a class='link' href='main.php?adm=5'>Beklædninger</a><br />";
+}
+?>
 				</div>
 				<div id="cat_view">
                     <?php
@@ -80,8 +90,73 @@ echo "</ul>";
                       	include 'includes/pages/search.php';
                     	}
                     	else {
-							if (isset($_REQUEST['page']) && $lock_row['rights']==1) {
-								echo "Du er kommet til admin med værdien = " . $_REQUEST['page'] . " og " . $lock_row['rights'];
+							if (isset($_REQUEST['adm']) && $rights==1) {
+								switch ($_REQUEST['adm']) {
+									case 1:
+										include 'includes/admin/list_manufacturer.php';
+										break;
+									case 2:
+										include 'includes/admin/list_carmodel.php';
+										break;
+									case 3:
+										include 'includes/admin/list_alulister.php';
+										break;
+									case 4:
+										include 'includes/admin/list_loft_bund.php';
+										break;
+									case 5:
+										include 'includes/admin/list_beklaedninger.php';
+										break;
+									case 6:
+										include 'includes/admin/form_add_manufacturer.php';
+										break;
+									case 7:
+										include 'includes/admin/form_update_manufacturer.php';
+										break;
+									case 8:
+										include 'includes/admin/form_delete_manufacturer.php';
+										break;
+									case 9:
+										include 'includes/admin/form_add_carmodel.php';
+										break;
+									case 10:
+										include 'includes/admin/form_update_carmodel.php';
+										break;
+									case 11:
+										include 'includes/admin/form_delete_carmodel.php';
+										break;
+									case 12:
+										include 'includes/admin/form_add_alulister.php';
+										break;
+									case 13:
+										include 'includes/admin/form_update_alulister.php';
+										break;
+									case 14:
+										include 'includes/admin/form_delete_alulister.php';
+										break;
+									case 15:
+										include 'includes/admin/form_add_loft_bund.php';
+										break;
+									case 16:
+										include 'includes/admin/form_update_loft_bund.php';
+										break;
+									case 17:
+										include 'includes/admin/form_delete_loft_bund.php';
+										break;
+									case 18:
+										include 'includes/admin/form_add_beklaedninger.php';
+										break;
+									case 19:
+										include 'includes/admin/form_update_beklaedninger.php';
+										break;
+									case 20:
+										include 'includes/admin/form_delete_beklaedninger.php';
+										break;
+									default:
+										echo "FEJL: Der er ingen admin funktion her!!";
+										break;
+								}
+
 							} else {
 								include 'includes/pages/frontpage.php';
 							}

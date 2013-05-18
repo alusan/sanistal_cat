@@ -35,7 +35,7 @@ $aluCount = mysql_num_rows($results_alu);
 if ($aluCount!=0) {
 	while ($row_alu = mysql_fetch_array($results_alu)) {
 		echo "<tr>";
-		echo "<td class='alu'><p>" . $row_alu['alu_navn'] . " - " . $row_alu['loft_bund'] . "</p></td>";
+		echo "<td class='alu'><p>" . $row_alu['loft_bund'] . "</p></td>";
 		echo "<td class='alu' ><p>" . $row_alu['length_cm'] . "</p></td>";
 		echo "</tr>";	
 	}

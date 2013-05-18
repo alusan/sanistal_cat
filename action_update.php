@@ -15,5 +15,5 @@ switch ($_POST['update']) {
 	default:
 		break;
 }
-	header("Location: mainadmin.php");
+	header("Location: main.php");
 ?>
