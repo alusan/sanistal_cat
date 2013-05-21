@@ -6,8 +6,8 @@ echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
 echo "<td class='alu' align='center' colspan='4'><a href='main.php?adm=12'>Tilføj aluliste</a></td>";
 echo "<tr class='aluFirstRow'>";
-echo "<td class='alu'><p>Type</p></td>";
-echo "<td class='alu'><p>Længde i cm.</p></td>";
+echo "<td class='alu'><p>Type:</p></td>";
+echo "<td class='alu'><p>Længde i cm.:</p></td>";
 echo "<tr>";
 
 while ($row_list = mysql_fetch_array($results_list)) {

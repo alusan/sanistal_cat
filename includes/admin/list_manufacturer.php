@@ -6,7 +6,7 @@ echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
 echo "<td class='alu' align='center' colspan='3'><a href='main.php?adm=6'>Tilføj fabrikant</a></td>";
 echo "<tr class='aluFirstRow'>";
-echo "<td class='alu'><p>Bilfabrikant</p></td>";
+echo "<td class='alu'><p>Bilfabrikant:</p></td>";
 echo "<tr>";
 
 while ($row_list = mysql_fetch_array($results_list)) {

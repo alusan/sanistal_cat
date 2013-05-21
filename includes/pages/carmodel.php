@@ -65,10 +65,10 @@ while($row_lb = mysql_fetch_array($results_lb)) {
         echo '</tr><tr>';
     }
     echo "<td>";
-	echo "<a href='images_fittings/" . $row_lb['billednavn'] . ".png' rel='lightbox[loftbund]' title='";
+	echo "<a href='images_fittings/" . $row_lb['billednavn'] . "' rel='lightbox[loftbund]' title='";
 	echo $row_lb['bund_loft'] . " - Sani nr. " . $row_lb['sani_nr'];
 	echo "'>";
-	echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . ".png' class='bor' alt='" . $row_lb['bund_loft'] . "' title='";
+	echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . "' class='bor' alt='" . $row_lb['bund_loft'] . "' title='";
 	echo "Sani nr. " . $row_lb['sani_nr'];
 	echo "' /></a>";
 	echo "<p>" . $row_lb['bund_loft'] . " - Sani nr. " . $row_lb['sani_nr'] . "</p>";
@@ -79,9 +79,7 @@ echo '</tr>';
 ?>					
 						</table>
 <?php
-$results_sani = mysql_query("SELECT * FROM bekladning_connect WHERE bil_id = '$bilid'", $conn); 
-$row_sani = mysql_fetch_array($results_sani);
-$be_sani = $row_sani['sani_nr'];
+$be_sani = $row_car['be_sani_nr'];
 
 if ($be_sani!=NULL) {
 echo "<h3>BEKLÆDNINGER - Sani nr. " . $be_sani . "</h3>";
@@ -100,11 +98,11 @@ while($row_be = mysql_fetch_array($results_be)) {
         echo '</tr><tr>';
     }
     echo "<td>";
-	echo "<a href='images_fittings/" . $row_be['billednavn'] . ".png' rel='lightbox[bekladninger]' title='";
+	echo "<a href='images_fittings/" . $row_be['billednavn'] . "' rel='lightbox[bekladninger]' title='";
 	$be_title = $row_be['be_titel'] . " (" . $row_be['prioritet'] . "/" . $max_be . ")";
 	echo $be_title;
 	echo "'>";
-	echo "<img src='images_fittings/bn_" . $row_be['billednavn'] . ".png' class='bor' alt='" . $be_title . "' title='";
+	echo "<img src='images_fittings/bn_" . $row_be['billednavn'] . "' class='bor' alt='" . $be_title . "' title='";
 	echo $be_title;
 	echo "' /></a>";
 	echo "<p>" . $be_title . "</p>";

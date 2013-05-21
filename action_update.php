@@ -6,14 +6,20 @@ switch ($_POST['update']) {
 	case 'manufacturer':
 		include 'includes/admin/update_manufacturer.php';
 		break;
-	case 'model':
-		// include 'includes/add_model.php';
+	case 'carmodel':
+		include 'includes/admin/update_carmodel.php';
 		break;
-	case 'car':
-		// include 'includes/add_car.php';
+	case 'alulister':
+		include 'includes/admin/update_alulister.php';
+		break;
+	case 'loft_bund':
+		include 'includes/admin/update_loft_bund.php';
+		break;
+	case 'beklaedninger':
+		include 'includes/admin/update_beklaedninger.php';
 		break;
 	default:
 		break;
 }
-	header("Location: main.php");
+	// header("Location: main.php");
 ?>

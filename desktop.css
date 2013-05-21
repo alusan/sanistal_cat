@@ -229,3 +229,8 @@ table.dblist, th.dblist, td.dblist
 .logud {
 	margin: 5px 0px 5px 0px;
 }
+
+.multiboxes {
+	height: 160px;
+	width: 260px;
+}
