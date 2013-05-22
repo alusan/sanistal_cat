@@ -15,7 +15,7 @@
 		<tr>
 			<td><p>Længde(r) i cm.:</p></td>
 			<td>
-				<textarea name="length_cm" rows="10" cols="30"></textarea>
+				<textarea wrap="hard" name="length_cm" rows="10" cols="30"></textarea>
 			</td>
 		</tr>
 	</table>
