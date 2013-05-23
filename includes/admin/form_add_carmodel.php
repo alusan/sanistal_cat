@@ -144,7 +144,7 @@ while ($ro_lister = mysql_fetch_array($re_lister)) {
 <?php
 $re_loftbund = mysql_query("SELECT * FROM loft_bund ORDER BY bund_loft, sani_nr", $conn); 
 while ($ro_loftbund = mysql_fetch_array($re_loftbund)) {
-	echo "<option value='". $ro_loftbund['sani_nr'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
+	echo "<option value='". $ro_loftbund['lb_id'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
 }
 ?>
             </select>

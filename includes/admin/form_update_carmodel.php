@@ -157,10 +157,10 @@ while ($ro_lister2 = mysql_fetch_array($re_lister2)) {
             <select name="bru_loftbunde[]" class="multiboxes" id="bru_loftbunde" MULTIPLE>
 <?php
 $loftbund_arr = array();
-$re_loftbund = mysql_query("SELECT * FROM loft_bund_connect, loft_bund WHERE loft_bund_connect.sani_nr = loft_bund.sani_nr AND bil_id = '$fab_id' 
+$re_loftbund = mysql_query("SELECT * FROM loft_bund_connect, loft_bund WHERE loft_bund_connect.lb_id = loft_bund.lb_id AND bil_id = '$fab_id' 
 								ORDER BY bund_loft, loft_bund.sani_nr", $conn); 
 while ($ro_loftbund = mysql_fetch_array($re_loftbund)) {
-	echo "<option value='". $ro_loftbund['sani_nr'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
+	echo "<option value='". $ro_loftbund['lb_id'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
 	$loftbund_arr[] = $ro_loftbund['lb_id'];
 }
 ?>
@@ -178,7 +178,7 @@ $re_loftbund2 = mysql_query("SELECT * FROM loft_bund ORDER BY bund_loft, sani_nr
 while ($ro_loftbund2 = mysql_fetch_array($re_loftbund2)) {
 	$id2 = $ro_loftbund2['lb_id'];
 	if (!in_array($id2, $loftbund_arr)) {
-		echo "<option value='". $ro_loftbund2['sani_nr'] ."'>". $ro_loftbund2['bund_loft'] ." - ". $ro_loftbund2['sani_nr'] ."</option>";
+		echo "<option value='". $ro_loftbund2['lb_id'] ."'>". $ro_loftbund2['bund_loft'] ." - ". $ro_loftbund2['sani_nr'] ."</option>";
 	}
 }
 ?>

@@ -26,7 +26,13 @@ include 'includes/user_lock.php';
 		});
 	});
 	</script>
-    
+    <script type="text/javascript">
+		function tombox() {
+			if (document.searchfield.search.value == "Søg bilens navn, fabrikant...") {
+				document.searchfield.search.value = "";
+			}
+		}
+	</script>
 	</head>
 	<body>
 		<div id="main">
@@ -35,10 +41,11 @@ include 'includes/user_lock.php';
 			</div>
 			<div id="searchbarMenu">
 				<div id="sfield">
-					<form method="post" action="main.php">
+					<form method="post" name="searchfield" action="main.php">
 						<div id="sfieldright">
 							<div id="sfieldleft">
-								<input class="searchfield" name="search" type="text" value="Søg bilens navn, fabrikant..." />
+								
+								<input class="searchfield" onfocus="javascript:tombox()" name="search" type="text" value="Søg bilens navn, fabrikant..." />
 							</div>
 						</div>
 					</form>

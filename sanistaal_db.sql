@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 22. 05 2013 kl. 09:07:22
+-- Genereringstid: 23. 05 2013 kl. 09:34:38
 -- Serverversion: 5.5.24-log
--- PHP-version: 5.3.13
+-- PHP-version: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `alulister` (
 INSERT INTO `alulister` (`alu_id`, `loft_bund`, `length_cm`) VALUES
 (1, 'Vognbund', '1x46 + 1x107'),
 (2, 'Loft', '2 stk 50 x 30 aluvinkel 310 cm<br />\r\n1 stk buet aluliste 320 cm<br />\r\n1 stk buet aluliste 162,5 cm'),
-(3, 'BeklÃ¦dning', '3 stk plade<br />\r\n+ 3 stk buet aluliste 200 cm');
+(3, 'BeklÃ¦dning', '3 stk plade + 3 stk buet aluliste 200 cm');
 
 -- --------------------------------------------------------
 
@@ -193,22 +193,20 @@ INSERT INTO `loft_bund` (`sani_nr`, `lb_id`, `bund_loft`, `billednavn`) VALUES
 
 CREATE TABLE IF NOT EXISTS `loft_bund_connect` (
   `bil_id` int(11) NOT NULL,
-  `sani_nr` int(11) NOT NULL
+  `lb_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Data dump for tabellen `loft_bund_connect`
 --
 
-INSERT INTO `loft_bund_connect` (`bil_id`, `sani_nr`) VALUES
-(5, 3169158),
-(5, 3169166),
-(9, 3169158),
-(9, 9999459),
-(10, 2047116),
-(10, 2047116),
-(10, 2047116),
-(10, 2047157);
+INSERT INTO `loft_bund_connect` (`bil_id`, `lb_id`) VALUES
+(5, 1),
+(5, 2),
+(10, 6),
+(10, 7),
+(10, 8),
+(10, 9);
 
 -- --------------------------------------------------------
 

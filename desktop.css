@@ -128,7 +128,7 @@ table p {
 }
 
 table.alu {
-	width: 275px;
+	width: 365px;
 	margin-top: 25px;
 }
 
@@ -232,5 +232,5 @@ table.dblist, th.dblist, td.dblist
 
 .multiboxes {
 	height: 160px;
-	width: 260px;
+	width: 400px;
 }

@@ -20,7 +20,7 @@ $row_fabrikant = mysql_fetch_array($results_fabrikant);
 						<h2><?php echo $row_car['bil_navn']; ?></h2>							
 						<table class="alu">
 							<tr class="aluFirstRow">
-								<td class="alu"><p>Aluminiums-lister</p></td>
+								<td class="alu" width="120"><p>Aluminiums-lister</p></td>
 								<td class="alu"><p>Længde i cm.</p></td>
 							</tr>
 
@@ -29,7 +29,7 @@ $row_fabrikant = mysql_fetch_array($results_fabrikant);
 // echo all if there are aluminum-strips available for the carmodel 
 $results_alu = mysql_query("SELECT * 
 							FROM alulister_connect, alulister
-							WHERE bil_id = '$bilid'", $conn);
+							WHERE alulister_connect.alu_id = alulister.alu_id AND bil_id = '$bilid'", $conn);
 $aluCount = mysql_num_rows($results_alu);
 
 if ($aluCount!=0) {
@@ -47,7 +47,7 @@ if ($aluCount!=0) {
 						<a href="pdf/<?php echo $row_car['pdf_filnavn']; ?>" target="_blank"><img class="extraTopMargin" src="design/button_download_pdf.jpg" alt="Download PDF" /></a>
 					</div>
 					<div id="right_view">
-						<a href="index.php"><img src="images_cars/<?php echo $row_car['billedenavn']; ?>" alt="Peugeot Bipper" /></a>
+						<img align="right" src="images_cars/<?php echo $row_car['billedenavn']; ?>" alt="<?php echo $row_car['billedenavn']; ?>" />
 					</div>
 					<div id="bottom_view">
 						<h3>VOGNBUNDE OG LOFT</h3>
@@ -55,7 +55,7 @@ if ($aluCount!=0) {
 <?php 
 $results_lb = mysql_query("SELECT * 
 							FROM  loft_bund_connect, loft_bund
-							WHERE bil_id = '$bilid' AND loft_bund_connect.sani_nr=loft_bund.sani_nr
+							WHERE bil_id = '$bilid' AND loft_bund_connect.lb_id=loft_bund.lb_id
 							ORDER BY bund_loft DESC", $conn);
 
 echo '<tr>';

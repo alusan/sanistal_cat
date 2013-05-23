@@ -21,7 +21,7 @@ $lb = $fab['loft_bund'];
 		<tr>
 			<td><p>Længde(r) i cm.:</p></td>
 			<td>
-				<textarea wrap="hard" name="length_cm" rows="10" cols="30"><?php echo str_replace("<br />", "", $fab['length_cm']); ?></textarea>
+				<textarea wrap="hard" name="length_cm" rows="10" cols="70"><?php echo str_replace("<br />", "", $fab['length_cm']); ?></textarea>
 			</td>
 		</tr>
 	</table>

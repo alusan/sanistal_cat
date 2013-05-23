@@ -23,6 +23,7 @@ if ($be_sani!=NULL && $be_titel!=NULL && $be_prioritet!=NULL && isset($_FILES['b
 	$width = $res[0];
 	$height = $res[1];
 	
+	$quality = 100;
 	$maxheight = 650;
 	$maxwidth = 1000;
 	
@@ -101,35 +102,35 @@ if ($be_sani!=NULL && $be_titel!=NULL && $be_prioritet!=NULL && isset($_FILES['b
 					$img = imagecreatefromjpeg($temp);
 					$thumb = imagecreatetruecolor($bn_width, $bn_height);
 					imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-					imagejpeg($thumb, $thumb_path);
+					imagejpeg($thumb, $thumb_path, $quality);
 					
 					// upload resized image
 					$img2 = imagecreatefromjpeg($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
-					imagejpeg($resizedimg, $resized_path);
+					imagejpeg($resizedimg, $resized_path, $quality);
 					break;
 				case 'image/png':
 					$img = imagecreatefrompng($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
                     imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-                    imagepng($thumb, $thumb_path);
+                    imagepng($thumb, $thumb_path, $quality);
 					
 					$img2 = imagecreatefrompng($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
-					imagepng($resizedimg, $resized_path);
+					imagepng($resizedimg, $resized_path, $quality);
 					break;
 				case 'image/gif':
 					$img = imagecreatefromgif($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
                     imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-                    imagegif($thumb, $thumb_path);
+                    imagegif($thumb, $thumb_path, $quality);
 					
 					$img2 = imagecreatefromgif($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
-					imagegif($resizedimg, $resized_path);
+					imagegif($resizedimg, $resized_path, $quality);
 					break;
 			}
 			

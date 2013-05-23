@@ -107,7 +107,7 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_PO
 			or die(mysql_error());
 	}
 	foreach ($_POST['bru_loftbunde'] as $cm_loftbunde) {
-		mysql_query("INSERT INTO loft_bund_connect (bil_id, sani_nr) VALUES('$bil_id', '$cm_loftbunde');") 
+		mysql_query("INSERT INTO loft_bund_connect (bil_id, lb_id) VALUES('$bil_id', '$cm_loftbunde');") 
 			or die(mysql_error());
 	}
 	
