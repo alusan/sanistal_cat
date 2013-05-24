@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 23. 05 2013 kl. 09:34:38
+-- Genereringstid: 24. 05 2013 kl. 11:16:16
 -- Serverversion: 5.5.24-log
--- PHP-version: 5.4.3
+-- PHP-version: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `alulister` (
   `loft_bund` varchar(255) NOT NULL,
   `length_cm` varchar(255) NOT NULL,
   PRIMARY KEY (`alu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Data dump for tabellen `alulister`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `alulister` (
 INSERT INTO `alulister` (`alu_id`, `loft_bund`, `length_cm`) VALUES
 (1, 'Vognbund', '1x46 + 1x107'),
 (2, 'Loft', '2 stk 50 x 30 aluvinkel 310 cm<br />\r\n1 stk buet aluliste 320 cm<br />\r\n1 stk buet aluliste 162,5 cm'),
-(3, 'BeklÃ¦dning', '3 stk plade + 3 stk buet aluliste 200 cm');
+(3, 'BeklÃ¦dning', '3 stk plade + 3 stk buet aluliste 200 cm'),
+(4, 'Vognbund', '1x61');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,8 @@ INSERT INTO `alulister_connect` (`bil_id`, `alu_id`) VALUES
 (5, 1),
 (9, 1),
 (10, 3),
-(10, 2);
+(10, 2),
+(11, 4);
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `bekladninger` (
   `prioritet` int(11) NOT NULL,
   `billednavn` varchar(255) NOT NULL,
   PRIMARY KEY (`be_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Data dump for tabellen `bekladninger`
@@ -95,7 +97,13 @@ INSERT INTO `bekladninger` (`sani_nr`, `be_id`, `be_titel`, `prioritet`, `billed
 (2047090, 15, 'MIDTERSTE SKYDEDÃ˜R', 7, '2047090_7_id15.png'),
 (2047090, 16, 'Ã˜VERSTE SKYDEDÃ˜R', 8, '2047090_8_id16.png'),
 (2047090, 17, 'VENSTRE BAGDÃ˜R', 9, '2047090_9_id17.png'),
-(2047090, 18, 'HÃ˜JRE BAGDÃ˜R', 10, '2047090_10_id18.png');
+(2047090, 18, 'HÃ˜JRE BAGDÃ˜R', 10, '2047090_10_id18.png'),
+(614313, 19, 'VENSTRE SIDEBEKLÃ†DNING', 1, '614313_1_id19.png'),
+(614313, 20, 'HÃ˜JRE SIDEBEKLÃ†DNING', 2, '614313_2_id20.png'),
+(614313, 21, 'SKYDEDÃ˜R NEDERST', 3, '614313_3_id21.png'),
+(614313, 22, 'SKYDEDÃ˜R Ã˜VERST', 4, '614313_4_id22.png'),
+(614313, 23, 'VENSTRE BAGDÃ˜R', 5, '614313_5_id23.png'),
+(614313, 24, 'HÃ˜JRE BAGDÃ˜R', 6, '614313_6_id24.png');
 
 -- --------------------------------------------------------
 
@@ -129,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `biler` (
   `billedenavn` varchar(255) NOT NULL,
   `pdf_filnavn` varchar(255) NOT NULL,
   PRIMARY KEY (`bil_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Data dump for tabellen `biler`
@@ -137,7 +145,8 @@ CREATE TABLE IF NOT EXISTS `biler` (
 
 INSERT INTO `biler` (`bil_id`, `fabrikant_id`, `be_sani_nr`, `bil_navn`, `billedenavn`, `pdf_filnavn`) VALUES
 (5, 7, 3169141, 'Bipper', 'peugeot_bipper.jpg', '1433317.pdf'),
-(10, 8, 2047090, 'Sprinter R2H2', 'Mercedes_Sprinter R2H2_10.png', '2047090_10.pdf');
+(10, 8, 2047090, 'Sprinter R2H2', 'Mercedes_Sprinter R2H2_10.png', '2047090_10.pdf'),
+(11, 9, 614313, 'Caddy', 'Volkswagen_Caddy_11.jpg', '614313_11.pdf');
 
 -- --------------------------------------------------------
 
@@ -149,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `fabrikant` (
   `fabrikant_id` int(100) NOT NULL AUTO_INCREMENT,
   `fabrikant_navn` varchar(255) NOT NULL,
   PRIMARY KEY (`fabrikant_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Data dump for tabellen `fabrikant`
@@ -157,7 +166,8 @@ CREATE TABLE IF NOT EXISTS `fabrikant` (
 
 INSERT INTO `fabrikant` (`fabrikant_id`, `fabrikant_navn`) VALUES
 (7, 'Peugot'),
-(8, 'Mercedes');
+(8, 'Mercedes'),
+(9, 'Volkswagen');
 
 -- --------------------------------------------------------
 
@@ -171,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `loft_bund` (
   `bund_loft` varchar(255) NOT NULL,
   `billednavn` varchar(255) NOT NULL,
   PRIMARY KEY (`lb_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Data dump for tabellen `loft_bund`
@@ -183,7 +193,8 @@ INSERT INTO `loft_bund` (`sani_nr`, `lb_id`, `bund_loft`, `billednavn`) VALUES
 (2047116, 6, 'LOFT', '2047116_loft_6.png'),
 (2047116, 7, 'LOFT', '2047116_loft_7.png'),
 (2047116, 8, 'LOFT', '2047116_loft_8.png'),
-(2047157, 9, 'VOGNBUND', '2047157_vognbund_9.png');
+(2047157, 9, 'VOGNBUND', '2047157_vognbund_9.png'),
+(454389, 10, 'VOGNBUND', '454389_vognbund_10.png');
 
 -- --------------------------------------------------------
 
@@ -206,7 +217,8 @@ INSERT INTO `loft_bund_connect` (`bil_id`, `lb_id`) VALUES
 (10, 6),
 (10, 7),
 (10, 8),
-(10, 9);
+(10, 9),
+(11, 10);
 
 -- --------------------------------------------------------
 
