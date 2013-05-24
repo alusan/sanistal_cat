@@ -30,6 +30,7 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_PO
 	$width = $res[0];
 	$height = $res[1];
 	
+	$jpgquality = 100;
 	$maxwidth = 304;
 	
 	switch($type){
@@ -66,25 +67,31 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_PO
 			
 			switch ($type) {
 				case 'image/jpeg':
-					// upload thumbnailimage
+					// upload thumbnail
 					$img = imagecreatefromjpeg($temp);
 					$thumb = imagecreatetruecolor($bn_width, $bn_height);
 					imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-					imagejpeg($thumb, $thumb_path);
+					imagejpeg($thumb, $thumb_path, $jpgquality);
 					break;
 				case 'image/png':
 					$img = imagecreatefrompng($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
-                    imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-                    imagepng($thumb, $thumb_path);
-                    break;
+                    imagecolortransparent($thumb, imagecolorallocatealpha($thumb, 0, 0, 0, 127));
+    				imagealphablending($thumb, false);
+    				imagesavealpha($thumb, true);
+                    imagecopyresampled($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
+                    imagepng($thumb, $thumb_path, 3);
+					break;
 				case 'image/gif':
 					$img = imagecreatefromgif($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
+                    imagecolortransparent($thumb, imagecolorallocatealpha($thumb, 0, 0, 0, 127));
+    				imagealphablending($thumb, false);
+    				imagesavealpha($thumb, true);
                     imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
                     imagegif($thumb, $thumb_path);
-                    break;
-			}	
+					break;
+			}		
 		}
 	} else {
 		echo "Image is of wrong type";

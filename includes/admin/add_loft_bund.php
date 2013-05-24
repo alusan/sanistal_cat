@@ -22,6 +22,7 @@ if ($lb_sani!=NULL && $lb_type!=NULL && isset($_FILES['lb_image'])) {
 	$width = $res[0];
 	$height = $res[1];
 	
+	$jpgquality = 100;
 	$maxheight = 650;
 	$maxwidth = 1000;
 	
@@ -100,33 +101,45 @@ if ($lb_sani!=NULL && $lb_type!=NULL && isset($_FILES['lb_image'])) {
 					$img = imagecreatefromjpeg($temp);
 					$thumb = imagecreatetruecolor($bn_width, $bn_height);
 					imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-					imagejpeg($thumb, $thumb_path);
+					imagejpeg($thumb, $thumb_path, $jpgquality);
 					
 					// upload resized image
 					$img2 = imagecreatefromjpeg($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
-					imagejpeg($resizedimg, $resized_path);
+					imagejpeg($resizedimg, $resized_path, $jpgquality);
 					break;
 				case 'image/png':
 					$img = imagecreatefrompng($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
-                    imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
-                    imagepng($thumb, $thumb_path);
+                    imagecolortransparent($thumb, imagecolorallocatealpha($thumb, 0, 0, 0, 127));
+    				imagealphablending($thumb, false);
+    				imagesavealpha($thumb, true);
+                    imagecopyresampled($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
+                    imagepng($thumb, $thumb_path, 3);
 					
 					$img2 = imagecreatefrompng($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
-					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
-					imagepng($resizedimg, $resized_path);
+					imagecolortransparent($resizedimg, imagecolorallocatealpha($resizedimg, 0, 0, 0, 127));
+    				imagealphablending($resizedimg, false);
+    				imagesavealpha($resizedimg, true);
+					imagecopyresampled($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
+					imagepng($resizedimg, $resized_path, 3);
 					break;
 				case 'image/gif':
 					$img = imagecreatefromgif($temp);
                     $thumb = imagecreatetruecolor($bn_width, $bn_height);
+                    imagecolortransparent($thumb, imagecolorallocatealpha($thumb, 0, 0, 0, 127));
+    				imagealphablending($thumb, false);
+    				imagesavealpha($thumb, true);
                     imagecopyresized($thumb, $img, 0, 0, 0, 0, $bn_width, $bn_height, $width, $height);
                     imagegif($thumb, $thumb_path);
 					
 					$img2 = imagecreatefromgif($temp);
 					$resizedimg = imagecreatetruecolor($re_width, $re_height);
+					imagecolortransparent($resizedimg, imagecolorallocatealpha($resizedimg, 0, 0, 0, 127));
+    				imagealphablending($resizedimg, false);
+    				imagesavealpha($resizedimg, true);
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
 					imagegif($resizedimg, $resized_path);
 					break;
