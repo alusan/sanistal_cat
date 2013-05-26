@@ -1,5 +1,5 @@
 <h1>Tilføj</h1>
-<h2>Fabrikant</h2>
+<h2>Bilfabrikant</h2>
 <form method="post" action="action_add.php">
 	<table>
 		<tr>
@@ -8,5 +8,5 @@
 		</tr>
 	</table>
 	<input type="hidden" name="add" value="manufacturer" />
-	<input type="submit" name="submit" value="Tilføj Fabrikant" />
+	<input type="submit" name="submit" value="Tilføj Bilfabrikant" />
 </form>

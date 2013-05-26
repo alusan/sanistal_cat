@@ -46,12 +46,6 @@ function allSelect()
   {
      List.options[i].selected = true;
   }
-  
-  List2 = document.forms[1].bru_loftbunde;
-  for (i=0;i<List2.length;i++)
-  {
-     List2.options[i].selected = true;
-  }
 }
 </script>
 <?php
@@ -96,12 +90,46 @@ while ($ro_fabrikant = mysql_fetch_array($re_fabrikant)) {
 				<input type="file" name="pdf"><!-- upload af billede her -->
 			</td>
 		</tr>
-				<tr>
+		<tr>
+			<td><p>Vognbund:</p></td>
+			<td>
+				<select name="vognbund">
+<?php
+$re_bund = mysql_query("SELECT distinct sani_nr FROM loft_bund ORDER BY sani_nr", $conn); 
+while ($ro_bund = mysql_fetch_array($re_bund)) {
+	echo "<option ";
+	if ($fab['vo_sani_nr'] == $ro_bund['sani_nr']) {
+		echo "selected='selected' ";
+	}
+	echo "value='". $ro_bund['sani_nr'] ."'>Sani nr.: ". $ro_bund['sani_nr'] ."</option>";
+}
+?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><p>Loft:</p></td>
+			<td>
+				<select name="loft">
+<?php
+$re_loft = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '2' ORDER BY sani_nr", $conn); 
+while ($ro_loft = mysql_fetch_array($re_loft)) {
+	echo "<option ";
+	if ($fab['lo_sani_nr'] == $ro_loft['sani_nr']) {
+		echo "selected='selected' ";
+	}
+	echo " value='". $ro_loft['sani_nr'] ."'>Sani nr.: ". $ro_loft['sani_nr'] ."</option>";
+}
+?>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td><p>Beklædningssortiment:</p></td>
 			<td>
 				<select name="beklaedninger">
 <?php
-$re_bekl = mysql_query("SELECT distinct sani_nr FROM bekladninger ORDER BY sani_nr", $conn); 
+$re_bekl = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '1' ORDER BY sani_nr", $conn); 
 while ($ro_bekl = mysql_fetch_array($re_bekl)) {
 	echo "<option ";
 	if ($fab['be_sani_nr'] == $ro_bekl['sani_nr']) {
@@ -151,45 +179,6 @@ while ($ro_lister2 = mysql_fetch_array($re_lister2)) {
     </tr>
 	</table>
 	<br />
-		<table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-        <td>
-            <select name="bru_loftbunde[]" class="multiboxes" id="bru_loftbunde" MULTIPLE>
-<?php
-$loftbund_arr = array();
-$re_loftbund = mysql_query("SELECT * FROM loft_bund_connect, loft_bund WHERE loft_bund_connect.lb_id = loft_bund.lb_id AND bil_id = '$fab_id' 
-								ORDER BY bund_loft, loft_bund.sani_nr", $conn); 
-while ($ro_loftbund = mysql_fetch_array($re_loftbund)) {
-	echo "<option value='". $ro_loftbund['lb_id'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
-	$loftbund_arr[] = $ro_loftbund['lb_id'];
-}
-?>
-            </select>
-        </td>
-        <td align="center" valign="middle">
-            <input type="Button" value="<< Tilføj" style="width:100px" onClick="SelectMoveRows(document.updatecar.ubru_loftbunde,document.updatecar.bru_loftbunde)">
-            <br>
-            <input type="Button" value="Fjern >>" style="width:100px" onClick="SelectMoveRows(document.updatecar.bru_loftbunde,document.updatecar.ubru_loftbunde)"><br>
-        </td>
-        <td>
-            <select name="ubru_loftbunde" class="multiboxes" MULTIPLE>
-<?php
-$re_loftbund2 = mysql_query("SELECT * FROM loft_bund ORDER BY bund_loft, sani_nr", $conn); 
-while ($ro_loftbund2 = mysql_fetch_array($re_loftbund2)) {
-	$id2 = $ro_loftbund2['lb_id'];
-	if (!in_array($id2, $loftbund_arr)) {
-		echo "<option value='". $ro_loftbund2['lb_id'] ."'>". $ro_loftbund2['bund_loft'] ." - ". $ro_loftbund2['sani_nr'] ."</option>";
-	}
-}
-?>
-            </select>
-        </td>
-    </tr>
-	</table>
-	<br />
-	
-	
-	
 	<input type="hidden" name="bil_id" value="<?php echo $fab_id; ?>" />
 	<input type="hidden" name="imgname" value="<?php echo $fab['billedenavn']; ?>" />
 	<input type="hidden" name="pdfname" value="<?php echo $fab['pdf_filnavn']; ?>" />

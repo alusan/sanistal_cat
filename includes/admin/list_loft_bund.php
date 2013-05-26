@@ -1,10 +1,10 @@
 <?php
 $results_list = mysql_query("SELECT * FROM loft_bund ORDER BY bund_loft, sani_nr", $conn);
 
-echo "<h1>Loft og bunde</h1>";
+echo "<h1>Lofter</h1>";
 echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
-echo "<td class='alu' align='center' colspan='5'><a href='main.php?adm=15'>Tilføj loft/bund</a></td>";
+echo "<tr><td class='alu' align='center' colspan='5'><a href='main.php?adm=15'>Tilføj loft/bund</a></td></tr>";
 echo "<tr class='aluFirstRow'>";
 echo "<td class='alu'><p>Sani nr.:</p></td>";
 echo "<td class='alu'><p>Bund el. Loft:</p></td>";

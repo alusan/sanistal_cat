@@ -1,11 +1,12 @@
 <?php 
 $be_sani = $_POST['sani_nr'];
 $be_titel = $_POST['titel'];
+$be_type = $_POST['type'];
 $be_prioritet = $_POST['prioritet'];
 
-if ($be_sani!=NULL && $be_titel!=NULL && $be_prioritet!=NULL && isset($_FILES['be_image'])) {
+if ($be_sani!=NULL && $be_titel!=NULL && $be_type!=NULL && $be_prioritet!=NULL && isset($_FILES['be_image'])) {
 	//STAGE 1 - add	to database and retrieve the id
-	mysql_query("INSERT INTO bekladninger (sani_nr, be_titel, prioritet, billednavn) VALUES('$be_sani', '$be_titel', '$be_prioritet', 'filler');") 
+	mysql_query("INSERT INTO bekladninger (sani_nr, be_titel, type, prioritet, billednavn) VALUES('$be_sani', '$be_titel', '$be_type', '$be_prioritet', 'filler');") 
 		or die(mysql_error());
 		
 	$last_result = mysql_query("SELECT * FROM bekladninger ORDER BY be_id DESC LIMIT 1", $conn); 

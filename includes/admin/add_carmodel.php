@@ -1,12 +1,15 @@
 <?php 
 $cm_fabrikantid = $_POST['fabrikantid'];
 $cm_name = $_POST['bilnavn'];
+
+$cm_bund_sani = $_POST['vognbund'];
+$cm_loft_sani = $_POST['loft'];
 $cm_bekl_sani = $_POST['beklaedninger'];
 
 if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_POST['bru_lister']) && isset($_POST['bru_loftbunde']) && isset($_FILES['image']) && isset($_FILES['pdf'])) {
 	//STAGE 1 - add	to database and retrieve the id
-	mysql_query("INSERT INTO biler (fabrikant_id, be_sani_nr, bil_navn, billedenavn, pdf_filnavn) 
-					VALUES('$cm_fabrikantid', '$cm_bekl_sani', '$cm_name', 'fillerImg', 'fillerPDF');") 
+	mysql_query("INSERT INTO biler (fabrikant_id, vo_sani_nr, lo_sani_nr, be_sani_nr, bil_navn, billedenavn, pdf_filnavn) 
+					VALUES('$cm_fabrikantid', '$cm_bund_sani', '$cm_loft_sani', '$cm_bekl_sani', '$cm_name', 'fillerImg', 'fillerPDF');") 
 		or die(mysql_error());
 		
 	$last_result = mysql_query("SELECT * FROM biler ORDER BY bil_id DESC LIMIT 1", $conn); 

@@ -46,12 +46,6 @@ function allSelect()
   {
      List.options[i].selected = true;
   }
-  
-  List2 = document.forms[1].bru_loftbunde;
-  for (i=0;i<List2.length;i++)
-  {
-     List2.options[i].selected = true;
-  }
 }
 </script>
 <h1>Tilføj</h1>
@@ -87,12 +81,38 @@ while ($ro_fabrikant = mysql_fetch_array($re_fabrikant)) {
 				<input type="file" name="pdf"><!-- upload af billede her -->
 			</td>
 		</tr>
-				<tr>
+		<tr>
+			<td><p>Vognbund:</p></td>
+			<td>
+				<select name="vognbund">
+<?php
+$re_bund = mysql_query("SELECT distinct sani_nr FROM loft_bund ORDER BY sani_nr", $conn); 
+while ($ro_bund = mysql_fetch_array($re_bund)) {
+	echo "<option value='". $ro_bund['sani_nr'] ."'>Sani nr.: ". $ro_bund['sani_nr'] ."</option>";
+}
+?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><p>Loft:</p></td>
+			<td>
+				<select name="loft">
+<?php
+$re_loft = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '2' ORDER BY sani_nr", $conn); 
+while ($ro_loft = mysql_fetch_array($re_loft)) {
+	echo "<option value='". $ro_loft['sani_nr'] ."'>Sani nr.: ". $ro_loft['sani_nr'] ."</option>";
+}
+?>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td><p>Beklædningssortiment:</p></td>
 			<td>
 				<select name="beklaedninger">
 <?php
-$re_bekl = mysql_query("SELECT distinct sani_nr FROM bekladninger ORDER BY sani_nr", $conn); 
+$re_bekl = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '1' ORDER BY sani_nr", $conn); 
 while ($ro_bekl = mysql_fetch_array($re_bekl)) {
 	echo "<option value='". $ro_bekl['sani_nr'] ."'>Sani nr.: ". $ro_bekl['sani_nr'] ."</option>";
 }
@@ -127,32 +147,6 @@ while ($ro_lister = mysql_fetch_array($re_lister)) {
     </tr>
 	</table>
 	<br />
-		<table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-        <td>
-            <select name="bru_loftbunde[]" class="multiboxes" id="bru_loftbunde" MULTIPLE>
-            	<!-- The connected loft/bunde are transferred here -->
-            </select>
-        </td>
-        <td align="center" valign="middle">
-            <input type="Button" value="<< Tilføj" style="width:100px" onClick="SelectMoveRows(document.addcar.ubru_loftbunde,document.addcar.bru_loftbunde)">
-            <br>
-            <input type="Button" value="Fjern >>" style="width:100px" onClick="SelectMoveRows(document.addcar.bru_loftbunde,document.addcar.ubru_loftbunde)"><br>
-        </td>
-        <td>
-            <select name="ubru_loftbunde" class="multiboxes" MULTIPLE>
-<?php
-$re_loftbund = mysql_query("SELECT * FROM loft_bund ORDER BY bund_loft, sani_nr", $conn); 
-while ($ro_loftbund = mysql_fetch_array($re_loftbund)) {
-	echo "<option value='". $ro_loftbund['lb_id'] ."'>". $ro_loftbund['bund_loft'] ." - ". $ro_loftbund['sani_nr'] ."</option>";
-}
-?>
-            </select>
-        </td>
-    </tr>
-	</table>
-	<br />
-
 	<input type="hidden" name="add" value="carmodel" />
 	<input type="submit" name="submit" value="Tilføj Bilmodel" />
 </form>

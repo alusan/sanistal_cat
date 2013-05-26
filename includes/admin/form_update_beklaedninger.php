@@ -16,6 +16,15 @@ $fab = mysql_fetch_array($res_fab);
 			<td><input type="text" name="titel" value="<?php echo $fab['be_titel']; ?>" /></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>
+				<p>
+					<input type="radio" <?php if ($fab['type'] == 1) { echo "checked='checked' ";} ?>name="type" value="1">Beklædning<br>
+					<input type="radio" <?php if ($fab['type'] == 2) { echo "checked='checked' ";} ?>name="type" value="2">Loft
+				</p>
+			</td>
+		</tr>
+		<tr>
 			<td><p>Prioritet (1 eller større):</p></td>
 			<td><input type="text" name="prioritet" value="<?php echo $fab['prioritet']; ?>" /></td>
 		</tr>

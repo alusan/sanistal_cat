@@ -31,12 +31,21 @@ h3 {
 
 p {
 	font-size: small;
+	color: #333;
 }
 
 p.errorm {
 	color: red;
 	font-weight: bold;
 	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+
+p.list_title {
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 3px 0px 3px 0px;
 	text-align: center;
 }
 
@@ -242,5 +251,5 @@ table.dblist, th.dblist, td.dblist
 
 .multiboxes {
 	height: 160px;
-	width: 400px;
+	width: 285px;
 }

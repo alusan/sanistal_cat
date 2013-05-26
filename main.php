@@ -28,7 +28,7 @@ include 'includes/user_lock.php';
 	</script>
     <script type="text/javascript">
 		function tombox() {
-			if (document.searchfield.search.value == "Søg bilens navn...") {
+			if (document.searchfield.search.value == "Søg efter bilmodeller") {
 				document.searchfield.search.value = "";
 			}
 		}
@@ -45,7 +45,7 @@ include 'includes/user_lock.php';
 						<div id="sfieldright">
 							<div id="sfieldleft">
 								
-								<input class="searchfield" onfocus="javascript:tombox()" name="search" type="text" value="Søg bilens navn..." />
+								<input class="searchfield" onfocus="javascript:tombox()" name="search" type="text" value="Søg efter bilmodeller" />
 							</div>
 						</div>
 					</form>
@@ -76,11 +76,11 @@ echo "</ul>";
 <?php
 if ($rights==1) {
 	echo "<br /><h3>Admin</h3>";
-	echo "<a class='link' href='main.php?adm=1'>Fabrikanter</a><br />";
+	echo "<a class='link' href='main.php?adm=1'>Bilfabrikanter</a><br />";
 	echo "<a class='link' href='main.php?adm=2'>Bilmodeller</a><br />";
 	echo "<a class='link' href='main.php?adm=3'>Alulister</a><br />";
-	echo "<a class='link' href='main.php?adm=4'>Loft og bunde</a><br />";
-	echo "<a class='link' href='main.php?adm=5'>Beklædninger</a><br />";
+	echo "<a class='link' href='main.php?adm=4'>Vognbunde</a><br />";
+	echo "<a class='link' href='main.php?adm=5'>Beklædninger / Lofter</a><br />";
 }
 ?>
 				</div>

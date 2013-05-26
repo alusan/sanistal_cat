@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 24. 05 2013 kl. 11:16:16
+-- Genereringstid: 26. 05 2013 kl. 18:51:09
 -- Serverversion: 5.5.24-log
--- PHP-version: 5.3.13
+-- PHP-version: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -75,35 +75,40 @@ CREATE TABLE IF NOT EXISTS `bekladninger` (
   `sani_nr` int(11) NOT NULL,
   `be_id` int(11) NOT NULL AUTO_INCREMENT,
   `be_titel` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `type` int(1) NOT NULL,
   `prioritet` int(11) NOT NULL,
   `billednavn` varchar(255) NOT NULL,
   PRIMARY KEY (`be_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Data dump for tabellen `bekladninger`
 --
 
-INSERT INTO `bekladninger` (`sani_nr`, `be_id`, `be_titel`, `prioritet`, `billednavn`) VALUES
-(3169141, 1, 'VENSTRE SIDE', 1, '3169141_1.png'),
-(3169141, 2, 'HÃ˜JRE SIDE', 2, '3169141_2.png'),
-(3169141, 3, 'SKYDEDÃ˜R', 3, '3169141_3.png'),
-(2047090, 9, 'VENSTRE SIDE BAG', 1, '2047090_1_id9.png'),
-(2047090, 10, 'VENSTRE MIDTERSTE DEL', 2, '2047090_2_id10.png'),
-(2047090, 11, 'VENSTRE SIDE FORRESTE', 3, '2047090_3_id11.png'),
-(2047090, 12, 'HÃ˜JRE SIDE BAG', 4, '2047090_4_id12.png'),
-(2047090, 13, 'HÃ˜JRE SIDE FORRESTE DEL', 5, '2047090_5_id13.png'),
-(2047090, 14, 'NEDERSTE SKYDEDÃ˜R', 6, '2047090_6_id14.png'),
-(2047090, 15, 'MIDTERSTE SKYDEDÃ˜R', 7, '2047090_7_id15.png'),
-(2047090, 16, 'Ã˜VERSTE SKYDEDÃ˜R', 8, '2047090_8_id16.png'),
-(2047090, 17, 'VENSTRE BAGDÃ˜R', 9, '2047090_9_id17.png'),
-(2047090, 18, 'HÃ˜JRE BAGDÃ˜R', 10, '2047090_10_id18.png'),
-(614313, 19, 'VENSTRE SIDEBEKLÃ†DNING', 1, '614313_1_id19.png'),
-(614313, 20, 'HÃ˜JRE SIDEBEKLÃ†DNING', 2, '614313_2_id20.png'),
-(614313, 21, 'SKYDEDÃ˜R NEDERST', 3, '614313_3_id21.png'),
-(614313, 22, 'SKYDEDÃ˜R Ã˜VERST', 4, '614313_4_id22.png'),
-(614313, 23, 'VENSTRE BAGDÃ˜R', 5, '614313_5_id23.png'),
-(614313, 24, 'HÃ˜JRE BAGDÃ˜R', 6, '614313_6_id24.png');
+INSERT INTO `bekladninger` (`sani_nr`, `be_id`, `be_titel`, `type`, `prioritet`, `billednavn`) VALUES
+(3169141, 1, 'VENSTRE SIDE', 1, 1, '3169141_1.png'),
+(3169141, 2, 'HÃ˜JRE SIDE', 1, 2, '3169141_2.png'),
+(3169141, 3, 'SKYDEDÃ˜R', 1, 3, '3169141_3.png'),
+(2047090, 9, 'VENSTRE SIDE BAG', 1, 1, '2047090_1_id9.png'),
+(2047090, 10, 'VENSTRE MIDTERSTE DEL', 1, 2, '2047090_2_id10.png'),
+(2047090, 11, 'VENSTRE SIDE FORRESTE', 1, 3, '2047090_3_id11.png'),
+(2047090, 12, 'HÃ˜JRE SIDE BAG', 1, 4, '2047090_4_id12.png'),
+(2047090, 13, 'HÃ˜JRE SIDE FORRESTE DEL', 1, 5, '2047090_5_id13.png'),
+(2047090, 14, 'NEDERSTE SKYDEDÃ˜R', 1, 6, '2047090_6_id14.png'),
+(2047090, 15, 'MIDTERSTE SKYDEDÃ˜R', 1, 7, '2047090_7_id15.png'),
+(2047090, 16, 'Ã˜VERSTE SKYDEDÃ˜R', 1, 8, '2047090_8_id16.png'),
+(2047090, 17, 'VENSTRE BAGDÃ˜R', 1, 9, '2047090_9_id17.png'),
+(2047090, 18, 'HÃ˜JRE BAGDÃ˜R', 1, 10, '2047090_10_id18.png'),
+(614313, 19, 'VENSTRE SIDEBEKLÃ†DNING', 1, 1, '614313_1_id19.png'),
+(614313, 20, 'HÃ˜JRE SIDEBEKLÃ†DNING', 1, 2, '614313_2_id20.png'),
+(614313, 21, 'SKYDEDÃ˜R NEDERST', 1, 3, '614313_3_id21.png'),
+(614313, 22, 'SKYDEDÃ˜R Ã˜VERST', 1, 4, '614313_4_id22.png'),
+(614313, 23, 'VENSTRE BAGDÃ˜R', 1, 5, '614313_5_id23.png'),
+(614313, 24, 'HÃ˜JRE BAGDÃ˜R', 1, 6, '614313_6_id24.png'),
+(3169158, 25, 'ingen', 2, 1, '3169158_1_id25.png'),
+(2047116, 27, 'ingen', 2, 1, '2047116_1_id27.png'),
+(2047116, 28, 'ingen', 2, 2, '2047116_2_id28.png'),
+(2047116, 29, 'ingen', 2, 3, '2047116_3_id29.png');
 
 -- --------------------------------------------------------
 
@@ -132,6 +137,8 @@ INSERT INTO `bekladning_connect` (`bil_id`, `sani_nr`) VALUES
 CREATE TABLE IF NOT EXISTS `biler` (
   `bil_id` int(11) NOT NULL AUTO_INCREMENT,
   `fabrikant_id` int(11) NOT NULL,
+  `vo_sani_nr` int(11) NOT NULL,
+  `lo_sani_nr` int(11) NOT NULL,
   `be_sani_nr` int(11) NOT NULL,
   `bil_navn` varchar(255) NOT NULL,
   `billedenavn` varchar(255) NOT NULL,
@@ -143,10 +150,10 @@ CREATE TABLE IF NOT EXISTS `biler` (
 -- Data dump for tabellen `biler`
 --
 
-INSERT INTO `biler` (`bil_id`, `fabrikant_id`, `be_sani_nr`, `bil_navn`, `billedenavn`, `pdf_filnavn`) VALUES
-(5, 7, 3169141, 'Bipper', 'peugeot_bipper.jpg', '1433317.pdf'),
-(10, 8, 2047090, 'Sprinter R2H2', 'Mercedes_Sprinter R2H2_10.png', '2047090_10.pdf'),
-(11, 9, 614313, 'Caddy', 'Volkswagen_Caddy_11.jpg', '614313_11.pdf');
+INSERT INTO `biler` (`bil_id`, `fabrikant_id`, `vo_sani_nr`, `lo_sani_nr`, `be_sani_nr`, `bil_navn`, `billedenavn`, `pdf_filnavn`) VALUES
+(5, 7, 3169166, 3169158, 3169141, 'Bipper', 'peugeot_bipper.jpg', '1433317.pdf'),
+(10, 8, 2047157, 2047116, 2047090, 'Sprinter R2H2', 'Mercedes_Sprinter R2H2_10.png', '2047090_10.pdf'),
+(11, 9, 454389, 0, 614313, 'Caddy', 'Volkswagen_Caddy_11.jpg', '614313_11.pdf');
 
 -- --------------------------------------------------------
 
@@ -188,11 +195,7 @@ CREATE TABLE IF NOT EXISTS `loft_bund` (
 --
 
 INSERT INTO `loft_bund` (`sani_nr`, `lb_id`, `bund_loft`, `billednavn`) VALUES
-(3169158, 1, 'LOFT', '3169158_loft.png'),
 (3169166, 2, 'VOGNBUND', '3169166_vognbund.png'),
-(2047116, 6, 'LOFT', '2047116_loft_6.png'),
-(2047116, 7, 'LOFT', '2047116_loft_7.png'),
-(2047116, 8, 'LOFT', '2047116_loft_8.png'),
 (2047157, 9, 'VOGNBUND', '2047157_vognbund_9.png'),
 (454389, 10, 'VOGNBUND', '454389_vognbund_10.png');
 

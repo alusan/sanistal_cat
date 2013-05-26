@@ -1,10 +1,10 @@
 <?php
 $results_list = mysql_query("SELECT * FROM fabrikant ORDER BY fabrikant_navn", $conn);
 
-echo "<h1>Fabrikanter</h1>";
+echo "<h1>Bilfabrikanter</h1>";
 echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
-echo "<td class='alu' align='center' colspan='3'><a href='main.php?adm=6'>Tilføj fabrikant</a></td>";
+echo "<tr><td class='alu' align='center' colspan='3'><a href='main.php?adm=6'>Tilføj fabrikant</a></td></tr>";
 echo "<tr class='aluFirstRow'>";
 echo "<td class='alu'><p>Bilfabrikant:</p></td>";
 echo "<tr>";

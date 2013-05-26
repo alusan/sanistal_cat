@@ -50,30 +50,33 @@ if ($aluCount!=0) {
 						<img align="right" src="images_cars/<?php echo $row_car['billedenavn']; ?>" alt="<?php echo $row_car['billedenavn']; ?>" />
 					</div>
 					<div id="bottom_view">
-						<h3>VOGNBUNDE OG LOFT</h3>
+<?php
+$vogn_sani = $row_car['vo_sani_nr'];
+?>	
+						<h3>VOGNBUND - Sani nr.: <?php echo $vogn_sani; ?></h3>
 						<table class="confitting">
-<?php 
-$results_lb = mysql_query("SELECT * 
-							FROM  loft_bund_connect, loft_bund
-							WHERE bil_id = '$bilid' AND loft_bund_connect.lb_id=loft_bund.lb_id
+<?php
+$results_bund = mysql_query("SELECT * 
+							FROM  loft_bund
+							WHERE sani_nr = '$vogn_sani'
 							ORDER BY bund_loft DESC", $conn);
 
 echo '<tr>';
-$i_lb = 0;
-while($row_lb = mysql_fetch_array($results_lb)) {
-    if($i_lb > 0 and $i_lb % 3 == 0) {
+$i_bund = 0;
+while($row_bund = mysql_fetch_array($results_bund)) {
+    if($i_bund > 0 and $i_bund % 3 == 0) {
         echo '</tr><tr>';
     }
     echo "<td>";
-	echo "<a href='images_fittings/" . $row_lb['billednavn'] . "' rel='lightbox[loftbund]' title='";
-	echo $row_lb['bund_loft'] . " - Sani nr. " . $row_lb['sani_nr'];
+	echo "<a href='images_fittings/" . $row_bund['billednavn'] . "' rel='lightbox[bund]' title='";
+	echo $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'];
 	echo "'>";
-	echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . "' class='bor' alt='" . $row_lb['bund_loft'] . "' title='";
-	echo "Sani nr. " . $row_lb['sani_nr'];
+	echo "<img src='images_fittings/bn_" . $row_bund['billednavn'] . "' class='bor' alt='" . $row_bund['bund_loft'] . "' title='";
+	echo "Sani nr. " . $row_bund['sani_nr'];
 	echo "' /></a>";
-	echo "<p>" . $row_lb['bund_loft'] . " - Sani nr. " . $row_lb['sani_nr'] . "</p>";
+	echo "<p>" . $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'] . "</p>";
 	echo "</td>";
-    $i_lb++;
+    $i_bund++;
 }
 echo '</tr>';				
 ?>					
@@ -112,9 +115,40 @@ while($row_be = mysql_fetch_array($results_be)) {
 echo '</tr></table>';
 } else {
 	echo "<h3>Ingen beklædninger knyttet bilmodellen</h3>";
-}
+}					
+?>
+<?php
+$loft_sani = $row_car['lo_sani_nr'];
+?>	
+						<h3>LOFT - Sani nr.: <?php echo $loft_sani; ?></h3>
+						<table class="confitting">
+<?php
+$loft_sani = $row_car['lo_sani_nr'];
+$results_lb = mysql_query("SELECT * 
+							FROM  bekladninger
+							WHERE sani_nr = '$loft_sani'
+							ORDER BY prioritet", $conn);
 
-	
-					
-?>				
+echo '<tr>';
+$max_lo = mysql_num_rows($results_lb);
+$i_lb = 0;
+while($row_lb = mysql_fetch_array($results_lb)) {
+    if($i_lb > 0 and $i_lb % 3 == 0) {
+        echo '</tr><tr>';
+    }
+    echo "<td>";
+	echo "<a href='images_fittings/" . $row_lb['billednavn'] . "' rel='lightbox[loft]' title='";
+	$lo_title = "LOFT " . " (" . $row_lb['prioritet'] . "/" . $max_lo . ")";
+	echo $lo_title;
+	echo "'>";
+	echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . "' class='bor' alt='Loft' title='";
+	echo "Sani nr. " . $row_lb['sani_nr'];
+	echo "' /></a>";
+	echo "<p>" . $lo_title . "</p>";
+	echo "</td>";
+    $i_lb++;
+	}
+echo '</tr>';				
+?>					
+						</table>	
 					</div>

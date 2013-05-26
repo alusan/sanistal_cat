@@ -1,6 +1,8 @@
 <?php 
 $cm_fabrikantid = $_POST['fabrikantid'];
 $cm_name = $_POST['bilnavn'];
+$cm_bund_sani = $_POST['vognbund'];
+$cm_loft_sani = $_POST['loft'];
 $cm_bekl_sani = $_POST['beklaedninger'];
 $bil_id = $_POST['bil_id'];
 
@@ -97,7 +99,7 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL) {
 	}
 	
 	//STAGE 4 - Update database with the filenames for image and pdf
-	mysql_query("UPDATE biler SET fabrikant_id = '$cm_fabrikantid', be_sani_nr = '$cm_bekl_sani', bil_navn = '$cm_name', 
+	mysql_query("UPDATE biler SET fabrikant_id = '$cm_fabrikantid', vo_sani_nr = '$cm_bund_sani', lo_sani_nr = '$cm_loft_sani', be_sani_nr = '$cm_bekl_sani', bil_navn = '$cm_name', 
 									billedenavn = '$filename', pdf_filnavn = '$pdf_filename' WHERE bil_id = '$bil_id';") 
 			or die(mysql_error());
 	

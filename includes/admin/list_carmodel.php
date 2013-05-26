@@ -6,7 +6,7 @@ $results_list = mysql_query("SELECT *
 echo "<h1>Bilmodeller</h1>";
 echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
-echo "<td class='alu' align='center' colspan='4'><a href='main.php?adm=9'>Tilføj bilmodel</a></td>";
+echo "<tr><td class='alu' align='center' colspan='4'><a href='main.php?adm=9'>Tilføj bilmodel</a></td></tr>";
 echo "<tr class='aluFirstRow'>";
 echo "<td class='alu'><p>Bilfabrikant:</p></td>";
 echo "<td class='alu'><p>Bilnavn:</p></td>";

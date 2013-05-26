@@ -4,7 +4,7 @@ $res_fab = mysql_query("SELECT * FROM fabrikant WHERE fabrikant_id = '$fab_id'",
 $fab = mysql_fetch_array($res_fab);
 ?>
 <h1>Opdater</h1>
-<h2>Fabrikant</h2>
+<h2>Bilfabrikant</h2>
 <form method="post" action="action_update.php">
 	<table>
 		<tr>
@@ -14,5 +14,5 @@ $fab = mysql_fetch_array($res_fab);
 	</table>
 	<input type="hidden" name="manufacturer_id" value="<?php echo $fab_id; ?>" />
 	<input type="hidden" name="update" value="manufacturer" />
-	<input type="submit" name="submit" value="Opdater Fabrikant" />
+	<input type="submit" name="submit" value="Opdater Bilfabrikant" />
 </form>

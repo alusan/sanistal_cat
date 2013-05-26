@@ -4,10 +4,11 @@
 $bekladning_id = $_POST['be_id'];
 $be_sani = $_POST['sani_nr'];
 $be_titel = $_POST['titel'];
+$be_type = $_POST['type'];
 $be_prioritet = $_POST['prioritet'];
 $filename = $_POST['imgname']; // this is the standard if there is no image
 
-if ($be_sani!=NULL && $bekladning_id!=NULL && $be_titel!=NULL && $be_prioritet!=NULL) {
+if ($be_sani!=NULL && $bekladning_id!=NULL && $be_titel!=NULL && $be_type!=NULL && $be_prioritet!=NULL) {
 	
 	// STAGE 2 - check if there is an image.. then resize and upload image / thumbnail
 	if ($_FILES["be_image"]["size"] > 0) {
@@ -152,7 +153,7 @@ if ($be_sani!=NULL && $bekladning_id!=NULL && $be_titel!=NULL && $be_prioritet!=
 	}
 	
 	//STAGE 3 - Update database 
-	mysql_query("UPDATE bekladninger SET sani_nr = '$be_sani', be_titel = '$be_titel', prioritet = '$be_prioritet', billednavn = '$filename' WHERE be_id = '$bekladning_id';")
+	mysql_query("UPDATE bekladninger SET sani_nr = '$be_sani', be_titel = '$be_titel', type = '$be_type', prioritet = '$be_prioritet', billednavn = '$filename' WHERE be_id = '$bekladning_id';")
 			or die(mysql_error());
 } else {
 	echo "kører ikke";
