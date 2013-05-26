@@ -33,11 +33,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<body class="loginbg">
 		<div id="loginbox">
 			<div id="lbox_top">
-				<h3>Login:</h2>
 			</div>
 			<div id="lbox_bottom">
 			<form method="post" action="">
 				<table width="250">
+					<?php 
+					if($_SERVER["REQUEST_METHOD"] == "POST") {
+					echo "<tr><td height='22' colspan='2'><p class='errorm'>Indtastet forkert brugernavn/kodeord</p></td></tr>";
+					} else {
+						echo "<tr><td height='22' colspan='2'></td></tr>";
+					}
+					?>
 					<tr>
 						<td align="right"><p>Bruger:</p></td>
 						<td><input name="username" type="text" /></td>

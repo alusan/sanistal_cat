@@ -4,7 +4,7 @@ $s_value = $_POST['search'];
 $results_search = mysql_query("SELECT *
 								FROM fabrikant, biler
 								WHERE fabrikant.fabrikant_id = biler.fabrikant_id AND
-									(bil_navn LIKE '%" . $s_value . "%' OR fabrikant_navn LIKE '%" . $s_value . "%')", $conn); 
+									(bil_navn LIKE '%" . $s_value . "%')", $conn); 
 echo "<h1>Din søgning</h1>";
 echo "<table class='alu'>";
 echo "<tr class='aluFirstRow'>";

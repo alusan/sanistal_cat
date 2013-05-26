@@ -33,6 +33,13 @@ p {
 	font-size: small;
 }
 
+p.errorm {
+	color: red;
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+
 a.navilink {
 	font-size: medium;
 }
@@ -158,20 +165,23 @@ table.dblist, th.dblist, td.dblist
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 240px;
-	width: 250px;
-	height: 200px;
+	width: 350px;
 	border: solid black 1px;
 	background-color: white;
 }
 
 #lbox_top {
-	width: 250px;
-	height: 40px;
+	width: 350px;
+	height: 103px;
+	background-color: #0b233f;
+	background-image: url('design/logo.jpg');
+	background-repeat: no-repeat;
+	background-position: right;
 }
 
 #lbox_bottom {
-	width: 250px;
-	height: 160px;
+	width: 350px;
+	height: 120px;
 }
 
 .bor {
