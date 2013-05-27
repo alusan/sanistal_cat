@@ -87,7 +87,7 @@ while ($ro_fabrikant = mysql_fetch_array($re_fabrikant)) {
 		<tr>
 			<td><p>PDF Upload (maks. 5 mb):</p></td>
 			<td>
-				<input type="file" name="pdf"><!-- upload af billede her -->
+				<input type="file" name="pdf"><!-- upload af pdf her -->
 			</td>
 		</tr>
 		<tr>

@@ -126,7 +126,7 @@ echo '</tr></table>';
 $loft_sani = $row_car['lo_sani_nr'];
 
 if ($loft_sani != 0) {
-	echo "<h3>VOGNBUND - Sani nr.: " . $loft_sani . "</h3>";
+	echo "<h3>LOFT - Sani nr.: " . $loft_sani . "</h3>";
 	echo "<table class='confitting'>";	
 	$results_lb = mysql_query("SELECT * 
 							FROM  bekladninger

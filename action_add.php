@@ -9,6 +9,7 @@ switch ($_POST['add']) {
 		break;
 	case 'carmodel':
 		include 'includes/admin/add_carmodel.php';
+		header("Location: main.php?adm=2");
 		break;
 	case 'alulister':
 		include 'includes/admin/add_alulister.php';

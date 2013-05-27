@@ -24,7 +24,6 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL) {
 	
 	if (in_array($type, $imgtypes)) {
 		if ($size > 0 && $size < 5242880) {
-			$pdf = $_FILES['pdf']['tmp_name'];
 			$temp = $_FILES['image']['tmp_name'];
 	
 			$res = getimagesize($temp);
@@ -88,14 +87,14 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL) {
 					break;
 			}	
 		}
-	} else {
-		echo "Image is of wrong type";
 	}
 	
 	//STAGE 3 - upload PDF if its below 5 mb
 	if ($pdf_size > 0 && $pdf_size < 5242880) {
+		$pdf = $_FILES['pdf']['tmp_name'];
 		$pdf_filename = $cm_bekl_sani . "_" . $bil_id . ".pdf";
 		move_uploaded_file($pdf, "pdf/$pdf_filename");
+		echo "string";
 	}
 	
 	//STAGE 4 - Update database with the filenames for image and pdf
