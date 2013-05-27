@@ -5,10 +5,15 @@
 		
 		$get_result = mysql_query("SELECT * FROM biler WHERE bil_id = '$bil_id'", $conn); 
 		$get_row = mysql_fetch_array($get_result); 
-		$filename = $get_row['billedenavn'];
+		$imgname = $get_row['billedenavn'];
+		$pdfname = $get_row['pdf_filnavn'];
 		
 		$path = "images_cars/";
-		$delete_img_path = $path . $filename;
+		$delete_img_path = $path . $imgname;
+		unlink($delete_img_path);
+		
+		$path = "pdf/";
+		$delete_pdf_path = $path . $pdfname;
 		unlink($delete_img_path);
 		
 		mysql_query("DELETE FROM biler WHERE bil_id = '$bil_id' LIMIT 1;") 

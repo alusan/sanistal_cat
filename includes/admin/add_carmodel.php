@@ -6,7 +6,7 @@ $cm_bund_sani = $_POST['vognbund'];
 $cm_loft_sani = $_POST['loft'];
 $cm_bekl_sani = $_POST['beklaedninger'];
 
-if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_POST['bru_lister']) && isset($_POST['bru_loftbunde']) && isset($_FILES['image']) && isset($_FILES['pdf'])) {
+if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_POST['bru_lister']) && isset($_FILES['image']) && isset($_FILES['pdf'])) {
 	//STAGE 1 - add	to database and retrieve the id
 	mysql_query("INSERT INTO biler (fabrikant_id, vo_sani_nr, lo_sani_nr, be_sani_nr, bil_navn, billedenavn, pdf_filnavn) 
 					VALUES('$cm_fabrikantid', '$cm_bund_sani', '$cm_loft_sani', '$cm_bekl_sani', '$cm_name', 'fillerImg', 'fillerPDF');") 
@@ -114,10 +114,6 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL && isset($_PO
 	//STAGE 5 - insert into relational databases loft_bund and alulister
 	foreach ($_POST['bru_lister'] as $cm_alulister) {
 		mysql_query("INSERT INTO alulister_connect (bil_id, alu_id) VALUES('$bil_id', '$cm_alulister');") 
-			or die(mysql_error());
-	}
-	foreach ($_POST['bru_loftbunde'] as $cm_loftbunde) {
-		mysql_query("INSERT INTO loft_bund_connect (bil_id, lb_id) VALUES('$bil_id', '$cm_loftbunde');") 
 			or die(mysql_error());
 	}
 	

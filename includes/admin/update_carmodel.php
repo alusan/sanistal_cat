@@ -110,14 +110,6 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL) {
 	foreach ($_POST['bru_lister'] as $cm_alulister) {
 		mysql_query("INSERT INTO alulister_connect (bil_id, alu_id) VALUES('$bil_id', '$cm_alulister');") 
 			or die(mysql_error());
-	}
-	
-	mysql_query("DELETE FROM loft_bund_connect WHERE bil_id = '$bil_id';") 
-			or die(mysql_error());
-	foreach ($_POST['bru_loftbunde'] as $cm_loftbunde) {
-		mysql_query("INSERT INTO loft_bund_connect (bil_id, lb_id) VALUES('$bil_id', '$cm_loftbunde');") 
-			or die(mysql_error());
-	}
-	
+	}	
 }	
 ?>

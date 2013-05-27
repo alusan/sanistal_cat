@@ -29,7 +29,8 @@ $row_fabrikant = mysql_fetch_array($results_fabrikant);
 // echo all if there are aluminum-strips available for the carmodel 
 $results_alu = mysql_query("SELECT * 
 							FROM alulister_connect, alulister
-							WHERE alulister_connect.alu_id = alulister.alu_id AND bil_id = '$bilid'", $conn);
+							WHERE alulister_connect.alu_id = alulister.alu_id AND bil_id = '$bilid'
+							ORDER BY loft_bund DESC", $conn);
 $aluCount = mysql_num_rows($results_alu);
 
 if ($aluCount!=0) {
@@ -52,45 +53,48 @@ if ($aluCount!=0) {
 					<div id="bottom_view">
 <?php
 $vogn_sani = $row_car['vo_sani_nr'];
-?>	
-						<h3>VOGNBUND - Sani nr.: <?php echo $vogn_sani; ?></h3>
-						<table class="confitting">
-<?php
-$results_bund = mysql_query("SELECT * 
+if ($vogn_sani != 0) {
+	echo "<h3>VOGNBUND - Sani nr.: " . $vogn_sani . "</h3>";
+	echo "<table class='confitting'>";					
+
+	$results_bund = mysql_query("SELECT * 
 							FROM  loft_bund
 							WHERE sani_nr = '$vogn_sani'
 							ORDER BY bund_loft DESC", $conn);
 
-echo '<tr>';
-$i_bund = 0;
-while($row_bund = mysql_fetch_array($results_bund)) {
-    if($i_bund > 0 and $i_bund % 3 == 0) {
-        echo '</tr><tr>';
-    }
-    echo "<td>";
-	echo "<a href='images_fittings/" . $row_bund['billednavn'] . "' rel='lightbox[bund]' title='";
-	echo $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'];
-	echo "'>";
-	echo "<img src='images_fittings/bn_" . $row_bund['billednavn'] . "' class='bor' alt='" . $row_bund['bund_loft'] . "' title='";
-	echo "Sani nr. " . $row_bund['sani_nr'];
-	echo "' /></a>";
-	echo "<p>" . $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'] . "</p>";
-	echo "</td>";
-    $i_bund++;
+	echo '<tr>';
+	$i_bund = 0;
+	while($row_bund = mysql_fetch_array($results_bund)) {
+ 	   if($i_bund > 0 and $i_bund % 3 == 0) {
+	        echo '</tr><tr>';
+ 	   }
+ 	   echo "<td>";
+		echo "<a href='images_fittings/" . $row_bund['billednavn'] . "' rel='lightbox[bund]' title='";
+		echo $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'];
+		echo "'>";
+		echo "<img src='images_fittings/bn_" . $row_bund['billednavn'] . "' class='bor' alt='" . $row_bund['bund_loft'] . "' title='";
+		echo "Sani nr. " . $row_bund['sani_nr'];
+		echo "' /></a>";
+		echo "<p>" . $row_bund['bund_loft'] . " - Sani nr. " . $row_bund['sani_nr'] . "</p>";
+		echo "</td>";
+ 	   $i_bund++;
+	}
+	echo '</tr></table>';
+} else {
+	echo "<h3>Ingen vognbund knyttet bilmodellen</h3>";
 }
-echo '</tr>';				
-?>					
-						</table>
+?>	
+									
 <?php
 $be_sani = $row_car['be_sani_nr'];
 
-if ($be_sani!=NULL) {
+if ($be_sani != 0) {
 echo "<h3>BEKLÆDNINGER - Sani nr. " . $be_sani . "</h3>";
 echo "<table class='confitting'>";
 
 $results_be = mysql_query("SELECT * 
 							FROM  bekladninger
-							WHERE sani_nr = '$be_sani'
+							WHERE sani_nr = '$be_sani AND type = 1'
 							ORDER BY prioritet", $conn);
 
 $max_be = mysql_num_rows($results_be);
@@ -117,38 +121,40 @@ echo '</tr></table>';
 	echo "<h3>Ingen beklædninger knyttet bilmodellen</h3>";
 }					
 ?>
+	
 <?php
 $loft_sani = $row_car['lo_sani_nr'];
-?>	
-						<h3>LOFT - Sani nr.: <?php echo $loft_sani; ?></h3>
-						<table class="confitting">
-<?php
-$loft_sani = $row_car['lo_sani_nr'];
-$results_lb = mysql_query("SELECT * 
+
+if ($loft_sani != 0) {
+	echo "<h3>VOGNBUND - Sani nr.: " . $loft_sani . "</h3>";
+	echo "<table class='confitting'>";	
+	$results_lb = mysql_query("SELECT * 
 							FROM  bekladninger
-							WHERE sani_nr = '$loft_sani'
+							WHERE sani_nr = '$loft_sani AND type = 2'
 							ORDER BY prioritet", $conn);
 
-echo '<tr>';
-$max_lo = mysql_num_rows($results_lb);
-$i_lb = 0;
-while($row_lb = mysql_fetch_array($results_lb)) {
-    if($i_lb > 0 and $i_lb % 3 == 0) {
-        echo '</tr><tr>';
-    }
-    echo "<td>";
-	echo "<a href='images_fittings/" . $row_lb['billednavn'] . "' rel='lightbox[loft]' title='";
-	$lo_title = "LOFT " . " (" . $row_lb['prioritet'] . "/" . $max_lo . ")";
-	echo $lo_title;
-	echo "'>";
-	echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . "' class='bor' alt='Loft' title='";
-	echo "Sani nr. " . $row_lb['sani_nr'];
-	echo "' /></a>";
-	echo "<p>" . $lo_title . "</p>";
-	echo "</td>";
-    $i_lb++;
+	echo '<tr>';
+	$max_lo = mysql_num_rows($results_lb);
+	$i_lb = 0;
+	while($row_lb = mysql_fetch_array($results_lb)) {
+ 	   if($i_lb > 0 and $i_lb % 3 == 0) {
+			echo '</tr><tr>';
+ 	   }
+    	echo "<td>";
+		echo "<a href='images_fittings/" . $row_lb['billednavn'] . "' rel='lightbox[loft]' title='";
+		$lo_title = "LOFT " . " (" . $row_lb['prioritet'] . "/" . $max_lo . ")";
+		echo $lo_title;
+		echo "'>";
+		echo "<img src='images_fittings/bn_" . $row_lb['billednavn'] . "' class='bor' alt='Loft' title='";
+		echo "Sani nr. " . $row_lb['sani_nr'];
+		echo "' /></a>";
+		echo "<p>" . $lo_title . "</p>";
+		echo "</td>";
+ 	   $i_lb++;
 	}
-echo '</tr>';				
-?>					
-						</table>	
+	echo '</tr></table>';
+} else {
+	echo "<h3>Ingen loft(er) knyttet bilmodellen</h3>";
+}				
+?>				
 					</div>

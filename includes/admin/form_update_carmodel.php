@@ -94,6 +94,7 @@ while ($ro_fabrikant = mysql_fetch_array($re_fabrikant)) {
 			<td><p>Vognbund:</p></td>
 			<td>
 				<select name="vognbund">
+					<option value="0">Ingen</option>
 <?php
 $re_bund = mysql_query("SELECT distinct sani_nr FROM loft_bund ORDER BY sani_nr", $conn); 
 while ($ro_bund = mysql_fetch_array($re_bund)) {
@@ -111,6 +112,7 @@ while ($ro_bund = mysql_fetch_array($re_bund)) {
 			<td><p>Loft:</p></td>
 			<td>
 				<select name="loft">
+					<option value="0">Ingen</option>
 <?php
 $re_loft = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '2' ORDER BY sani_nr", $conn); 
 while ($ro_loft = mysql_fetch_array($re_loft)) {
@@ -128,6 +130,7 @@ while ($ro_loft = mysql_fetch_array($re_loft)) {
 			<td><p>Beklædningssortiment:</p></td>
 			<td>
 				<select name="beklaedninger">
+					<option value="0">Ingen</option>
 <?php
 $re_bekl = mysql_query("SELECT distinct sani_nr FROM bekladninger WHERE type = '1' ORDER BY sani_nr", $conn); 
 while ($ro_bekl = mysql_fetch_array($re_bekl)) {
