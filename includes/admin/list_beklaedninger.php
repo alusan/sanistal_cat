@@ -1,6 +1,6 @@
 <?php
 $results_list = mysql_query("SELECT * FROM bekladninger WHERE type = '1' ORDER BY sani_nr, prioritet", $conn);
-echo "<h1>Beklædninger</h1>";
+echo "<h1>Beklædninger / Lofter</h1>";
 echo "<h2>Admin</h2>";
 echo "<table class='dblist'>";
 echo "<tr><td class='alu' align='center' colspan='6'><a href='main.php?adm=18'>Tilføj beklædning / loft</a></td></tr>";

@@ -17,6 +17,9 @@ if ($cm_fabrikantid!=NULL && $cm_name!=NULL && $cm_bekl_sani!=NULL) {
 	
 	// STAGE 2 - resize and upload image and its thumbnail
 	$pdf_size = $_FILES['pdf']['size'];
+	$pdf_type = $_FILES['pdf']['type'];
+	echo $pdf_size;
+	echo $pdf_type;
 	$size = $_FILES['image']['size'];
 	$type = $_FILES['image']['type'];
 	

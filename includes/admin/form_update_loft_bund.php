@@ -5,21 +5,12 @@ $fab = mysql_fetch_array($res_fab);
 $lb = $fab['bund_loft'];
 ?>
 <h1>Opdater</h1>
-<h2>Loft/Vognbund</h2>
+<h2>Vognbund</h2>
 <form method="post" action="action_update.php" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td><p>Sani nr.:</p></td>
 			<td><input type="text" name="sani_nr" value="<?php echo $fab['sani_nr']; ?>" /></td>
-		</tr>
-		<tr>
-			<td><p>Type:</p></td>
-			<td>
-				<select name="bund_loft">
-					<option<?php if ($lb=="LOFT") { echo " selected='selected'"; } ?> value="LOFT">Loft</option>
-					<option<?php if ($lb=="VOGNBUND") { echo " selected='selected'"; } ?> value="VOGNBUND">Vognbund</option>
-				</select>
-			</td>
 		</tr>
 		<tr>
 			<td><p>Billede (jpg, gif el. png):</p></td>
@@ -29,7 +20,8 @@ $lb = $fab['bund_loft'];
 		</tr>
 	</table>
 	<input type="hidden" name="lb_id" value="<?php echo $fab_id; ?>" />
+	<input type="hidden" name="bund_loft" value="VOGNBUND" />
 	<input type="hidden" name="imgname" value="<?php echo $fab['billednavn']; ?>" />
 	<input type="hidden" name="update" value="loft_bund" />
-	<input type="submit" name="submit" value="Opdater Loft/Bund" />
+	<input type="submit" name="submit" value="Opdater Vognbund" />
 </form>

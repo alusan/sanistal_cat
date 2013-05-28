@@ -49,6 +49,14 @@ p.list_title {
 	text-align: center;
 }
 
+p.form_title {
+	color: black;
+	font-size: medium;
+	margin: 3px 0px 3px 0px;
+	text-align: center;
+	border-bottom: solid 1px black;
+}
+
 a.navilink {
 	font-size: medium;
 }

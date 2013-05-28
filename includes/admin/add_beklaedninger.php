@@ -146,28 +146,6 @@ if ($be_sani!=NULL && $be_titel!=NULL && $be_type!=NULL && $be_prioritet!=NULL &
 					imagegif($resizedimg, $resized_path);
 					break;
 			}
-			
-			if( $width == $height ){ $shape=1; }
-            if( $width < $height ){ $shape=2; }
-            if( $width > $height ){ $shape=3; }
-			
-			switch( $shape ){                                        
-			case 1:
-				$newwidth=              100;
-				$newheight=             100;
-            	break;                                        
-			case 2:
-				$newwidth=              100;
-				$ratio=                 $newwidth / $width;
-				$newheight=             round( $height * $ratio );
-				break;                                       
-			case 3:
-				$newheight=             100;
-				$ratio=                 $newheight / $height;
-				$newwidth=              round( $width * $ratio );
-				break;
-                                                        
-			}	
 		}
 	} else {
 		echo "Image is of wrong type";

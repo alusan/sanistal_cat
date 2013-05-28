@@ -143,28 +143,6 @@ if ($lb_sani!=NULL && $lb_type!=NULL && isset($_FILES['lb_image'])) {
 					imagecopyresized($resizedimg, $img2, 0, 0, 0, 0, $re_width, $re_height, $width, $height);
 					imagegif($resizedimg, $resized_path);
 					break;
-			}
-			
-			if( $width == $height ){ $shape=1; }
-            if( $width < $height ){ $shape=2; }
-            if( $width > $height ){ $shape=3; }
-			
-			switch( $shape ){                                        
-			case 1:
-				$newwidth=              100;
-				$newheight=             100;
-            	break;                                        
-			case 2:
-				$newwidth=              100;
-				$ratio=                 $newwidth / $width;
-				$newheight=             round( $height * $ratio );
-				break;                                       
-			case 3:
-				$newheight=             100;
-				$ratio=                 $newheight / $height;
-				$newwidth=              round( $width * $ratio );
-				break;
-                                                        
 			}	
 		}
 	} else {

@@ -126,6 +126,9 @@ while ($ro_bekl = mysql_fetch_array($re_bekl)) {
 	</table>
 	<br />
 	<table border="0" cellpadding="3" cellspacing="0">
+	<tr>
+    	<td colspan="3"><p class="form_title">Alulister:</p></td>
+    </tr>
     <tr>
         <td>
             <select name="bru_lister[]" class="multiboxes" id="bru_lister" MULTIPLE>

@@ -9,7 +9,7 @@ switch ($_POST['update']) {
 		break;
 	case 'carmodel':
 		include 'includes/admin/update_carmodel.php';
-		// header("Location: main.php?adm=2");
+		header("Location: main.php?adm=2");
 		break;
 	case 'alulister':
 		include 'includes/admin/update_alulister.php';
