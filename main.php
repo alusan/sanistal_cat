@@ -18,8 +18,6 @@ include 'includes/user_lock.php';
 		<script type="text/javascript" src="jquery.jstree.js"></script>
     <script type="text/javascript" class="source">
 	$(function () {
-
-		
 		$("#navigationmenu").jstree({
 			"themes" : {
 				"theme" : "apple"
@@ -78,11 +76,12 @@ echo "</ul>";
 <?php
 if ($rights==1) {
 	echo "<br /><h3>Admin</h3>";
-	echo "<a class='link' href='main.php?adm=1'>Bilfabrikanter</a><br />";
-	echo "<a class='link' href='main.php?adm=2'>Bilmodeller</a><br />";
 	echo "<a class='link' href='main.php?adm=3'>Alulister</a><br />";
 	echo "<a class='link' href='main.php?adm=4'>Vognbunde</a><br />";
 	echo "<a class='link' href='main.php?adm=5'>Beklædninger / Lofter</a><br />";
+	echo "<a class='link' href='main.php?adm=1'>Bilfabrikanter</a><br />";
+	echo "<a class='link' href='main.php?adm=2'>Bilmodeller</a><br /><br />";
+	echo "<a class='link' href='main.php?adm=21'>Brugere</a>";
 }
 ?>
 				</div>
@@ -160,6 +159,18 @@ if ($rights==1) {
 										break;
 									case 20:
 										include 'includes/admin/form_delete_beklaedninger.php';
+										break;
+									case 21:
+										include 'includes/admin/list_user.php';
+										break;
+									case 22:
+										include 'includes/admin/form_add_user.php';
+										break;
+									case 23:
+										include 'includes/admin/form_update_user.php';
+										break;
+									case 24:
+										include 'includes/admin/form_delete_user.php';
 										break;
 									default:
 										echo "FEJL: Der er ingen admin funktion her!!";

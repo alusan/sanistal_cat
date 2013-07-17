@@ -23,6 +23,10 @@ switch ($_POST['delete']) {
 		include 'includes/admin/delete_beklaedninger.php';
 		header("Location: main.php?adm=5");
 		break;
+	case 'user':
+		include 'includes/admin/delete_user.php';
+		header("Location: main.php?adm=21");
+		break;
 	default:
 		break;
 }
