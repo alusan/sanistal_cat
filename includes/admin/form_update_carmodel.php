@@ -148,13 +148,29 @@ while ($ro_bekl = mysql_fetch_array($re_bekl)) {
 	<br />
 	<table border="0" cellpadding="3" cellspacing="0">
     <tr>
-    	<td colspan="3"><p class="form_title">Alulister:</p></td>
+    	<td><p class="form_title">Alulister:</p></td>
     </tr>
     <tr>
-        <td>
-            <select name="bru_lister[]" class="multiboxes" id="bru_lister" MULTIPLE>
+        <td align="center" valign="middle">
+            <select name="ubru_lister" class="multiboxes" MULTIPLE>
 <?php
 $lister_arr = array();
+$re_lister2 = mysql_query("SELECT * FROM alulister ORDER BY loft_bund", $conn); 
+while ($ro_lister2 = mysql_fetch_array($re_lister2)) {
+	$id1 = $ro_lister2['alu_id'];
+	if (!in_array($id1, $lister_arr)) {
+		echo "<option value='". $ro_lister2['alu_id'] ."'>". $ro_lister2['loft_bund'] ." - ". $ro_lister2['length_cm'] ."</option>";
+	}
+}
+?>
+            </select><br /><br />
+        	
+            <input type="Button" value="Tilføj >>" style="width:100px" onClick="SelectMoveRows(document.updatecar.ubru_lister,document.updatecar.bru_lister)">
+            <br />
+            <input type="Button" value="<< Fjern" style="width:100px" onClick="SelectMoveRows(document.updatecar.bru_lister,document.updatecar.ubru_lister)"><br />
+      		<p class="form_title">Bilens Alulister:</p>
+            <select name="bru_lister[]" class="multiboxes" id="bru_lister" MULTIPLE>
+<?php
 $re_lister = mysql_query("SELECT * FROM alulister_connect, alulister WHERE alulister_connect.alu_id = alulister.alu_id AND bil_id = '$fab_id' 
 								ORDER BY loft_bund", $conn); 
 while ($ro_lister = mysql_fetch_array($re_lister)) {
@@ -164,24 +180,7 @@ while ($ro_lister = mysql_fetch_array($re_lister)) {
 ?>
             </select>
         </td>
-        <td align="center" valign="middle">
-            <input type="Button" value="<< Tilføj" style="width:100px" onClick="SelectMoveRows(document.updatecar.ubru_lister,document.updatecar.bru_lister)">
-            <br>
-            <input type="Button" value="Fjern >>" style="width:100px" onClick="SelectMoveRows(document.updatecar.bru_lister,document.updatecar.ubru_lister)"><br>
-        </td>
-        <td>
-            <select name="ubru_lister" class="multiboxes" MULTIPLE>
-<?php
-$re_lister2 = mysql_query("SELECT * FROM alulister ORDER BY loft_bund", $conn); 
-while ($ro_lister2 = mysql_fetch_array($re_lister2)) {
-	$id1 = $ro_lister2['alu_id'];
-	if (!in_array($id1, $lister_arr)) {
-		echo "<option value='". $ro_lister2['alu_id'] ."'>". $ro_lister2['loft_bund'] ." - ". $ro_lister2['length_cm'] ."</option>";
-	}
-}
-?>
-            </select>
-        </td>
+
     </tr>
 	</table>
 	<br />

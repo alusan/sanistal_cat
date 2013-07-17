@@ -130,25 +130,23 @@ while ($ro_bekl = mysql_fetch_array($re_bekl)) {
     	<td colspan="3"><p class="form_title">Alulister:</p></td>
     </tr>
     <tr>
-        <td>
-            <select name="bru_lister[]" class="multiboxes" id="bru_lister" MULTIPLE>
-            	<!-- The connected alulister are transferred here -->
-            </select>
-        </td>
         <td align="center" valign="middle">
-            <input type="Button" value="<< Tilføj" style="width:100px" onClick="SelectMoveRows(document.addcar.ubru_lister,document.addcar.bru_lister)">
-            <br>
-            <input type="Button" value="Fjern >>" style="width:100px" onClick="SelectMoveRows(document.addcar.bru_lister,document.addcar.ubru_lister)"><br>
-        </td>
-        <td>
-            <select name="ubru_lister" class="multiboxes" MULTIPLE>
+			<select name="ubru_lister" class="multiboxes" MULTIPLE>
 <?php
 $re_lister = mysql_query("SELECT * FROM alulister ORDER BY loft_bund", $conn); 
 while ($ro_lister = mysql_fetch_array($re_lister)) {
 	echo "<option value='". $ro_lister['alu_id'] ."'>". $ro_lister['loft_bund'] ." - ". $ro_lister['length_cm'] ."</option>";
 }
 ?>
-            </select>
+            </select><br /><br />
+
+           <input type="Button" value="Tilføj >>" style="width:100px" onClick="SelectMoveRows(document.addcar.ubru_lister,document.addcar.bru_lister)">
+            <br />
+            <input type="Button" value="<< Fjern" style="width:100px" onClick="SelectMoveRows(document.addcar.bru_lister,document.addcar.ubru_lister)"><br />
+			<p class="form_title">Bilens Alulister:</p>
+        	<select name="bru_lister[]" class="multiboxes" id="bru_lister" MULTIPLE>
+            	<!-- The connected alulister are transferred here -->
+        	</select>
         </td>
     </tr>
 	</table>
