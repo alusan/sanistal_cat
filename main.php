@@ -18,6 +18,8 @@ include 'includes/user_lock.php';
 		<script type="text/javascript" src="jquery.jstree.js"></script>
     <script type="text/javascript" class="source">
 	$(function () {
+
+		
 		$("#navigationmenu").jstree({
 			"themes" : {
 				"theme" : "apple"
